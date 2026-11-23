@@ -1,0 +1,622 @@
+﻿<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOVRITY · Integrated Governance, Integrity &amp; Intelligence Platform</title>
+  <style>
+    :root {
+      --bg-base: #060e1c;
+      --glass-surface: rgba(14, 24, 44, 0.58);
+      --glass-card: rgba(20, 35, 62, 0.54);
+      --glass-border: rgba(255, 255, 255, 0.16);
+      --glass-highlight: rgba(255, 255, 255, 0.28);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-gold: #fbbf24;
+      --accent-emerald: #34d399;
+      --accent-rose: #fb7185;
+    }
+
+
+    body.light-glass {
+      --bg-base: #e9eff7;
+      --glass-surface: rgba(255, 255, 255, 0.68);
+      --glass-card: rgba(255, 255, 255, 0.58);
+      --glass-border: rgba(15, 23, 42, 0.12);
+      --glass-highlight: rgba(255, 255, 255, 0.9);
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+    }
+
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.24), transparent 42%),
+        radial-gradient(circle at 88% 12%, rgba(251, 191, 36, 0.18), transparent 38%),
+        radial-gradient(circle at 75% 85%, rgba(52, 211, 153, 0.15), transparent 45%),
+        var(--bg-base);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.55;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.9rem 1.4rem;
+      background: var(--glass-surface);
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: inset 0 1px 0 var(--glass-highlight);
+    }
+
+
+    .brand { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
+
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.92), rgba(56, 189, 248, 0.92));
+      color: #06101f;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.25);
+    }
+
+
+    .brand-name { font-weight: 800; letter-spacing: 0.05em; font-size: 1.02rem; }
+    .brand-tag { font-size: 0.74rem; color: var(--text-secondary); }
+
+
+    .nav-group { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+
+    .btn {
+      border: 1px solid var(--glass-border);
+      background: rgba(255, 255, 255, 0.07);
+      color: var(--text-primary);
+      padding: 0.5rem 0.88rem;
+      border-radius: 11px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      transition: all 0.18s ease;
+    }
+
+
+    .btn:hover { background: rgba(255, 255, 255, 0.16); transform: translateY(-1px); }
+    .btn.active, .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+      color: #05111e;
+      border-color: transparent;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--accent-gold), #d97706);
+      color: #111827;
+      border-color: transparent;
+    }
+
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 1.75rem 1.25rem 4rem; }
+
+
+    .glass-panel {
+      background: var(--glass-surface);
+      backdrop-filter: blur(24px) saturate(170%);
+      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      border: 1px solid var(--glass-border);
+      box-shadow: inset 0 1px 0 var(--glass-highlight), 0 18px 40px rgba(0, 0, 0, 0.22);
+      border-radius: 22px;
+      padding: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: rgba(251, 191, 36, 0.14);
+      border: 1px solid rgba(251, 191, 36, 0.32);
+      margin-bottom: 0.75rem;
+    }
+
+
+    h1 { font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.2; margin-bottom: 0.65rem; }
+    h2 { font-size: 1.22rem; margin-bottom: 0.45rem; }
+    p { color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.94rem; }
+
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+
+    .stat-card {
+      background: var(--glass-card);
+      border: 1px solid var(--glass-border);
+      box-shadow: inset 0 1px 0 var(--glass-highlight);
+      border-radius: 18px;
+      padding: 1.15rem;
+    }
+
+
+    .stat-num { font-size: 1.55rem; font-weight: 800; color: var(--accent-cyan); }
+    .stat-label { font-size: 0.82rem; color: var(--text-secondary); }
+
+
+    .section-view { display: none; }
+    .section-view.active { display: block; }
+
+
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; }
+
+
+    input, select, textarea {
+      width: 100%;
+      padding: 0.68rem 0.85rem;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: rgba(2, 6, 23, 0.55);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      margin-bottom: 0.95rem;
+    }
+
+
+    body.light-glass input, body.light-glass select, body.light-glass textarea {
+      background: rgba(255, 255, 255, 0.78);
+      color: #0f172a;
+    }
+
+
+    .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.15rem; }
+    .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 0.85rem; }
+
+
+    .mod-card {
+      background: var(--glass-card);
+      border: 1px solid var(--glass-border);
+      box-shadow: inset 0 1px 0 var(--glass-highlight);
+      border-radius: 16px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease;
+    }
+
+
+    .mod-card:hover { transform: translateY(-2px); border-color: var(--accent-cyan); }
+    .mod-code { font-size: 0.74rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 0.2rem; }
+    .mod-title { font-weight: 700; font-size: 0.96rem; margin-bottom: 0.25rem; }
+    .mod-desc { font-size: 0.8rem; color: var(--text-secondary); }
+
+
+    .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem; margin-top: 0.75rem; }
+
+
+    .ext-link {
+      display: block;
+      text-decoration: none;
+      color: var(--text-primary);
+      background: var(--glass-card);
+      border: 1px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 1rem;
+      transition: 0.18s ease;
+    }
+
+
+    .ext-link:hover { border-color: var(--accent-emerald); transform: translateY(-2px); }
+    .ext-link strong { display: block; color: var(--accent-emerald); margin-bottom: 0.2rem; }
+    .ext-link span { font-size: 0.8rem; color: var(--text-secondary); }
+
+
+    .alert-box {
+      padding: 0.95rem 1.1rem;
+      border-radius: 14px;
+      background: rgba(52, 211, 153, 0.14);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      font-size: 0.88rem;
+      margin-top: 0.85rem;
+    }
+
+
+    .share-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.75rem; }
+    .share-bar input { flex: 1 1 260px; margin-bottom: 0; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand" onclick="switchView('portal')">
+      <div class="brand-logo" id="logoBadge">GV</div>
+      <div>
+        <div class="brand-name" id="brandTitle">GOVRITY</div>
+        <div class="brand-tag">Governance, Integrity &amp; Intelligence Platform</div>
+      </div>
+    </div>
+
+
+    <nav class="nav-group">
+      <button class="btn active" id="nav-portal" onclick="switchView('portal')">Portal Aduan</button>
+      <button class="btn" id="nav-semak" onclick="switchView('semak')">Semak Status</button>
+      <button class="btn" id="nav-cio" onclick="switchView('cio')">Bilik Gerakan (14 Modul)</button>
+      <button class="btn" id="nav-risikan" onclick="switchView('risikan')">Risikan &amp; OSINT</button>
+      <button class="btn" id="nav-login" onclick="switchView('login')">Log Masuk</button>
+      <button class="btn btn-gold" onclick="toggleTheme()">Tema Kaca</button>
+    </nav>
+  </header>
+
+
+  <main class="wrap">
+    <section class="glass-panel">
+      <span class="hero-badge">INDEX.HTML · LIQUID GLASS UI</span>
+      <h1>Integriti, Tadbir Urus &amp; Pemantauan Risiko Bersepadu</h1>
+      <p>
+        Fail siap pakai <strong>index.html</strong> untuk dibuka terus di Google Chrome, diuji secara tempatan,
+        atau dimuat naik ke laman pengehosan web bagi dikongsi kepada pengguna lain.
+      </p>
+
+
+      <div class="share-bar">
+        <input id="shareUrlInput" type="text" readonly value="Muat naik index.html ke hos web (cth. Netlify Drop) untuk pautan awam" />
+        <button class="btn btn-primary" onclick="copyShareUrl()">Salin Pautan</button>
+        <button class="btn" onclick="detectCurrentUrl()">Kesan URL Semasa</button>
+      </div>
+      <div id="shareFeedback" class="alert-box" style="display:none;"></div>
+    </section>
+
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num" id="statAduan">1</div>
+        <div class="stat-label">Rekod Tiket Aktif Sesi Ini</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">14</div>
+        <div class="stat-label">Modul Bersepadu Agensi</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Pangkalan Semakan &amp; OSINT</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Saluran Aduan &amp; Rujukan</div>
+      </div>
+    </div>
+
+
+    <section id="view-portal" class="section-view active">
+      <div class="glass-panel">
+        <h2>Borang Aduan &amp; Perlindungan Pemberi Maklumat</h2>
+        <p>Pilih tahap kerahsiaan dan nyatakan butiran kejadian secara jelas.</p>
+
+
+        <form id="formAduan" onsubmit="janaTiket(event)">
+          <div class="two-col">
+            <div>
+              <label for="kategoriAduan">Kategori Salah Laku / Isu</label>
+              <select id="kategoriAduan">
+                <option value="Rasuah & Salah Guna Kuasa">Rasuah &amp; Salah Guna Kuasa</option>
+                <option value="Konflik Kepentingan (COI)">Konflik Kepentingan (COI)</option>
+                <option value="Ketidakaturan Perolehan">Ketidakaturan Perolehan</option>
+                <option value="Pelanggaran Tatakelakuan">Pelanggaran Tatakelakuan</option>
+                <option value="Salah Guna Aset / Hadiah">Salah Guna Aset / Hadiah</option>
+              </select>
+            </div>
+            <div>
+              <label for="modKerahsiaan">Pilihan Identiti</label>
+              <select id="modKerahsiaan">
+                <option value="Tanpa Nama (Anonymous)">Tanpa Nama (Anonymous)</option>
+                <option value="Sulit (Ketua Unit Integriti / CIO)">Sulit (Ketua Unit Integriti / CIO)</option>
+                <option value="Identiti Penuh">Identiti Penuh</option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="two-col">
+            <div>
+              <label for="lokasiKejadian">Lokasi / Bahagian Terlibat</label>
+              <input id="lokasiKejadian" type="text" placeholder="Contoh: Unit Perolehan / Cawangan X" required />
+            </div>
+            <div>
+              <label for="tarikhKejadian">Tarikh Kejadian</label>
+              <input id="tarikhKejadian" type="date" required />
+            </div>
+          </div>
+
+
+          <label for="butiranKejadian">Keterangan Fakta Kejadian</label>
+          <textarea id="butiranKejadian" rows="4" placeholder="Jelaskan kronologi, pihak terlibat, dan bukti sokongan yang ada..." required></textarea>
+
+
+          <button class="btn btn-primary" type="submit">Hantar Aduan &amp; Jana Tiket</button>
+        </form>
+
+
+        <div id="hasilTiket" class="alert-box" style="display:none;"></div>
+      </div>
+    </section>
+
+
+    <section id="view-semak" class="section-view">
+      <div class="glass-panel">
+        <h2>Semakan Status Aduan</h2>
+        <p>Masukkan No. Tiket untuk menyemak status terkini (contoh: <strong>GOV-2026-1001</strong>).</p>
+
+
+        <form onsubmit="semakStatusTiket(event)">
+          <label for="inputSemakTiket">No. Tiket Aduan</label>
+          <input id="inputSemakTiket" type="text" value="GOV-2026-1001" required />
+          <button class="btn btn-primary" type="submit">Semak Sekarang</button>
+        </form>
+
+
+        <div id="hasilSemak" class="alert-box" style="display:none;"></div>
+      </div>
+    </section>
+
+
+    <section id="view-cio" class="section-view">
+      <div class="glass-panel">
+        <h2>Bilik Gerakan Ketua Pegawai Integriti — 14 Modul Bersepadu</h2>
+        <p>Klik mana-mana kad modul di bawah untuk melihat ringkasan fungsi dalam operasi agensi.</p>
+
+
+        <div class="modules-grid" id="modulesGrid"></div>
+        <div id="modulDetail" class="alert-box" style="display:none;"></div>
+      </div>
+    </section>
+
+
+    <section id="view-risikan" class="section-view">
+      <div class="glass-panel">
+        <h2>Semakan Perolehan, Profil Syarikat &amp; Risikan Terbuka (OSINT)</h2>
+        <p>Masukkan nama syarikat, nombor pendaftaran, atau kata kunci untuk membantu rujukan semakan luaran.</p>
+
+
+        <label for="kataKunciRisikan">Kata Kunci Carian (Nama Syarikat / No. Rujukan / E-mel)</label>
+        <input id="kataKunciRisikan" type="text" placeholder="Contoh: Mega Bina Sdn Bhd atau QT2026001" />
+        <button class="btn btn-gold" onclick="salinKataKunci()">Salin Kata Kunci Carian</button>
+
+
+        <div class="link-grid">
+          <a class="ext-link" href="https://myprocurement.treasury.gov.my/" target="_blank" rel="noopener noreferrer">
+            <strong>MyProcurement (MOF)</strong>
+            <span>Rujukan maklumat perolehan &amp; sebutharga/tender kerajaan.</span>
+          </a>
+          <a class="ext-link" href="https://www.ssm-einfo.my/index.php" target="_blank" rel="noopener noreferrer">
+            <strong>SSM e-Info</strong>
+            <span>Semakan maklumat korporat, pengarah &amp; pemegang saham syarikat.</span>
+          </a>
+          <a class="ext-link" href="https://mcp.cidb.gov.my/MCP/ContractorSearch" target="_blank" rel="noopener noreferrer">
+            <strong>CIDB Contractor Search</strong>
+            <span>Semakan pendaftaran, gred &amp; status kontraktor binaan.</span>
+          </a>
+          <a class="ext-link" href="https://opencorporates.com/" target="_blank" rel="noopener noreferrer">
+            <strong>OpenCorporates</strong>
+            <span>Carian pangkalan data entiti korporat &amp; rangkaian syarikat.</span>
+          </a>
+          <a class="ext-link" href="https://app.osint.industries/" target="_blank" rel="noopener noreferrer">
+            <strong>OSINT Industries</strong>
+            <span>Semakan jejak maklumat terbuka berdasarkan e-mel, telefon atau identiti.</span>
+          </a>
+        </div>
+        <div id="risikanFeedback" class="alert-box" style="display:none;"></div>
+      </div>
+    </section>
+
+
+    <section id="view-login" class="section-view">
+      <div class="glass-panel">
+        <h2>Log Masuk Pegawai &amp; Pentadbir</h2>
+        <p>Antaramuka log masuk dalaman untuk akses modul pentadbiran dan bilik gerakan integriti.</p>
+
+
+        <form onsubmit="prosesLogin(event)">
+          <label for="perananLogin">Peranan Pengguna</label>
+          <select id="perananLogin">
+            <option value="Ketua Pegawai Integriti (CIO / KUI)">Ketua Pegawai Integriti (CIO / KUI)</option>
+            <option value="Pegawai Integriti (Pengesanan & Pengesahan)">Pegawai Integriti (Pengesanan &amp; Pengesahan)</option>
+            <option value="Urus Setia Tatatertib & Pematuhan">Urus Setia Tatatertib &amp; Pematuhan</option>
+          </select>
+
+
+          <label for="emelLogin">ID Pengguna / E-mel Rasmi</label>
+          <input id="emelLogin" type="email" placeholder="pegawai@agensi.gov.my" required />
+
+
+          <label for="katalaluanLogin">Kata Laluan</label>
+          <input id="katalaluanLogin" type="password" placeholder="••••••••" required />
+
+
+          <button class="btn btn-primary" type="submit">Log Masuk ke Bilik Gerakan</button>
+        </form>
+        <div id="loginFeedback" class="alert-box" style="display:none;"></div>
+      </div>
+    </section>
+  </main>
+
+
+  <script>
+    const senaraiModul = [
+      { kod: "MODUL 01", nama: "Complaints Management", fokus: "Penerimaan, saringan aduan & penilaian maklumat (JMM)." },
+      { kod: "MODUL 02", nama: "Detection & Verification", fokus: "Pengesanan, pengesahan fakta, kertas kes & diari tindakan." },
+      { kod: "MODUL 03", nama: "Disciplinary Management", fokus: "Pengurusan kes tatatertib, representasi & keputusan lembaga." },
+      { kod: "MODUL 04", nama: "Support Letter Management", fokus: "Pemantauan & kawalan permohonan surat sokongan." },
+      { kod: "MODUL 05", nama: "Asset Declaration (HAD)", fokus: "Rekod & semakan pematuhan pengisytiharan harta." },
+      { kod: "MODUL 06", nama: "Conflict of Interest (COI)", fokus: "Pengenalpastian & mitigasi konflik kepentingan." },
+      { kod: "MODUL 07", nama: "Gifts, Hospitality & Sponsorship", fokus: "Daftar penerimaan hadiah, keraian & penajaan." },
+      { kod: "MODUL 08", nama: "Governance Management", fokus: "Pelan antirasuah, mesyuarat jawatankuasa & kawalan tadbir urus." },
+      { kod: "MODUL 09", nama: "Compliance Management", fokus: "Pemeriksaan pematuhan berjadual/mengejut & semakan SOP." },
+      { kod: "MODUL 10", nama: "Integrity Strengthening", fokus: "Latihan, kesedaran, advokasi & pembudayaan integriti." },
+      { kod: "MODUL 11", nama: "Integrity Pact", fokus: "Komitmen integriti pembekal, kontraktor & rakan strategik." },
+      { kod: "MODUL 12", nama: "Integrity Due Diligence (IDD)", fokus: "Semakan wajar entiti, rakan niaga & risikan latar belakang." },
+      { kod: "MODUL 13", nama: "Corruption Risk Management", fokus: "Penilaian risiko rasuah & pelan tindakan kawalan risiko." },
+      { kod: "MODUL 14", nama: "E-IBI & PROTECT", fokus: "Indeks tingkah laku integriti & pemantauan amaran awal." }
+    ];
+
+
+    const pangkalanTiket = {
+      "GOV-2026-1001": {
+        kategori: "Ketidakaturan Perolehan",
+        status: "Dalam Penilaian Awal Unit Integriti"
+      }
+    };
+
+
+    function renderModul() {
+      const grid = document.getElementById("modulesGrid");
+      grid.innerHTML = senaraiModul.map((m, idx) => `
+        <div class="mod-card" onclick="pilihModul(${idx})">
+          <div class="mod-code">${m.kod}</div>
+          <div class="mod-title">${m.nama}</div>
+          <div class="mod-desc">${m.fokus}</div>
+        </div>
+      `).join("");
+    }
+
+
+    function pilihModul(idx) {
+      const m = senaraiModul[idx];
+      const box = document.getElementById("modulDetail");
+      box.style.display = "block";
+      box.innerHTML = `<strong>${m.kod} — ${m.nama}</strong><br>${m.fokus}`;
+    }
+
+
+    function switchView(viewName) {
+      document.querySelectorAll(".section-view").forEach((el) => el.classList.remove("active"));
+      const target = document.getElementById("view-" + viewName);
+      if (target) target.classList.add("active");
+
+
+      document.querySelectorAll(".nav-group .btn").forEach((b) => b.classList.remove("active"));
+      const activeBtn = document.getElementById("nav-" + viewName);
+      if (activeBtn) activeBtn.classList.add("active");
+    }
+
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-glass");
+    }
+
+
+    function detectCurrentUrl() {
+      const input = document.getElementById("shareUrlInput");
+      const fb = document.getElementById("shareFeedback");
+      const current = window.location.href;
+      input.value = current;
+      fb.style.display = "block";
+      fb.innerHTML = current.startsWith("http")
+        ? `Pautan aktif dikesan: <strong>${current}</strong>`
+        : "Fail sedang dibuka secara tempatan (<code>file://</code>). Muat naik <code>index.html</code> ke hos web seperti Netlify Drop untuk pautan yang boleh diakses semua orang.";
+    }
+
+
+    function copyShareUrl() {
+      const input = document.getElementById("shareUrlInput");
+      const fb = document.getElementById("shareFeedback");
+      navigator.clipboard?.writeText(input.value);
+      fb.style.display = "block";
+      fb.innerHTML = "Teks pautan telah disalin ke papan keratan.";
+    }
+
+
+    function janaTiket(e) {
+      e.preventDefault();
+      const randomDigits = Math.floor(1000 + Math.random() * 9000);
+      const tiket = "GOV-2026-" + randomDigits;
+      const kodLaluan = Math.random().toString(36).substring(2, 8).toUpperCase();
+      const kat = document.getElementById("kategoriAduan").value;
+      const mod = document.getElementById("modKerahsiaan").value;
+      const lok = document.getElementById("lokasiKejadian").value.trim();
+
+
+      pangkalanTiket[tiket] = {
+        kategori: kat,
+        status: `Diterima (${mod}) — menunggu penilaian awal di ${lok}`
+      };
+
+
+      document.getElementById("statAduan").textContent = Object.keys(pangkalanTiket).length;
+      const box = document.getElementById("hasilTiket");
+      box.style.display = "block";
+      box.innerHTML = `
+        <strong>Aduan Direkodkan dalam Sesi Semasa</strong><br>
+        No. Tiket: <strong>${tiket}</strong><br>
+        Kod Laluan Semakan: <strong>${kodLaluan}</strong><br>
+        Kategori: ${kat} (${mod})
+      `;
+      document.getElementById("formAduan").reset();
+    }
+
+
+    function semakStatusTiket(e) {
+      e.preventDefault();
+      const kod = document.getElementById("inputSemakTiket").value.trim().toUpperCase();
+      const box = document.getElementById("hasilSemak");
+      box.style.display = "block";
+      if (pangkalanTiket[kod]) {
+        box.innerHTML = `<strong>${kod}</strong> — ${pangkalanTiket[kod].kategori}<br>Status: ${pangkalanTiket[kod].status}`;
+      } else {
+        box.innerHTML = `Tiket <strong>${kod}</strong> tidak ditemui dalam rekod sesi ini. Cuba <strong>GOV-2026-1001</strong> atau jana tiket baharu.`;
+      }
+    }
+
+
+    function salinKataKunci() {
+      const val = document.getElementById("kataKunciRisikan").value.trim();
+      const fb = document.getElementById("risikanFeedback");
+      fb.style.display = "block";
+      if (!val) {
+        fb.innerHTML = "Sila masukkan kata kunci terlebih dahulu sebelum menyalin.";
+        return;
+      }
+      navigator.clipboard?.writeText(val);
+      fb.innerHTML = `Kata kunci <strong>${val}</strong> disalin. Klik kad pangkalan data di atas untuk membuka laman rujukan di tab baharu.`;
+    }
+
+
+    function prosesLogin(e) {
+      e.preventDefault();
+      const peranan = document.getElementById("perananLogin").value;
+      const emel = document.getElementById("emelLogin").value.trim();
+      const fb = document.getElementById("loginFeedback");
+      fb.style.display = "block";
+      fb.innerHTML = `Akses sesi dibuka untuk <strong>${emel}</strong> (${peranan}). Mengalihkan ke Bilik Gerakan...`;
+      setTimeout(() => switchView("cio"), 500);
+    }
+
+
+    renderModul();
+  </script>
+</body>
+</html>
