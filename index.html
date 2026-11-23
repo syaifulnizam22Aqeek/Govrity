@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GOVRITY · Integrated Governance, Integrity &amp; Intelligence Platform</title>
+  <title>GOVRITY · Integrated Governance, Integrity &amp; Intelligence Platform (14 Modules)</title>
   <style>
     :root {
       --bg-base: #060e1c;
-      --glass-surface: rgba(14, 24, 44, 0.58);
-      --glass-card: rgba(20, 35, 62, 0.54);
+      --glass-surface: rgba(13, 23, 42, 0.72);
+      --glass-card: rgba(19, 33, 58, 0.66);
       --glass-border: rgba(255, 255, 255, 0.16);
       --glass-highlight: rgba(255, 255, 255, 0.28);
       --text-primary: #f8fafc;
@@ -17,15 +17,16 @@
       --accent-gold: #fbbf24;
       --accent-emerald: #34d399;
       --accent-rose: #fb7185;
+      --accent-violet: #a78bfa;
     }
 
 
     body.light-glass {
       --bg-base: #e9eff7;
-      --glass-surface: rgba(255, 255, 255, 0.68);
-      --glass-card: rgba(255, 255, 255, 0.58);
-      --glass-border: rgba(15, 23, 42, 0.12);
-      --glass-highlight: rgba(255, 255, 255, 0.9);
+      --glass-surface: rgba(255, 255, 255, 0.78);
+      --glass-card: rgba(255, 255, 255, 0.68);
+      --glass-border: rgba(15, 23, 42, 0.13);
+      --glass-highlight: rgba(255, 255, 255, 0.92);
       --text-primary: #0f172a;
       --text-secondary: #475569;
     }
@@ -37,27 +38,26 @@
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background:
-        radial-gradient(circle at 12% 18%, rgba(56, 189, 248, 0.24), transparent 42%),
-        radial-gradient(circle at 88% 12%, rgba(251, 191, 36, 0.18), transparent 38%),
-        radial-gradient(circle at 75% 85%, rgba(52, 211, 153, 0.15), transparent 45%),
+        radial-gradient(circle at 10% 15%, rgba(56, 189, 248, 0.22), transparent 42%),
+        radial-gradient(circle at 90% 12%, rgba(251, 191, 36, 0.16), transparent 38%),
+        radial-gradient(circle at 75% 88%, rgba(52, 211, 153, 0.14), transparent 45%),
         var(--bg-base);
       color: var(--text-primary);
       min-height: 100vh;
-      line-height: 1.55;
-      transition: background 0.25s ease, color 0.25s ease;
+      line-height: 1.5;
     }
 
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 30;
+      z-index: 40;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       gap: 0.75rem;
-      padding: 0.9rem 1.4rem;
+      padding: 0.85rem 1.35rem;
       background: var(--glass-surface);
       backdrop-filter: blur(22px) saturate(165%);
       -webkit-backdrop-filter: blur(22px) saturate(165%);
@@ -67,23 +67,13 @@
 
 
     .brand { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
-
-
     .brand-logo {
-      width: 42px;
-      height: 42px;
-      border-radius: 13px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.92), rgba(56, 189, 248, 0.92));
-      color: #06101f;
-      font-weight: 800;
-      font-size: 0.95rem;
-      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.25);
+      width: 42px; height: 42px; border-radius: 13px;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--accent-gold), var(--accent-cyan));
+      color: #05111e; font-weight: 800; font-size: 0.95rem;
     }
-
-
-    .brand-name { font-weight: 800; letter-spacing: 0.05em; font-size: 1.02rem; }
+    .brand-name { font-weight: 800; letter-spacing: 0.05em; font-size: 1rem; }
     .brand-tag { font-size: 0.74rem; color: var(--text-secondary); }
 
 
@@ -92,435 +82,678 @@
 
     .btn {
       border: 1px solid var(--glass-border);
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08);
       color: var(--text-primary);
-      padding: 0.5rem 0.88rem;
-      border-radius: 11px;
-      font-size: 0.84rem;
+      padding: 0.48rem 0.85rem;
+      border-radius: 10px;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
-      backdrop-filter: blur(12px);
-      transition: all 0.18s ease;
+      transition: all 0.16s ease;
     }
-
-
     .btn:hover { background: rgba(255, 255, 255, 0.16); transform: translateY(-1px); }
     .btn.active, .btn-primary {
       background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
-      color: #05111e;
-      border-color: transparent;
+      color: #05111e; border-color: transparent;
     }
     .btn-gold {
       background: linear-gradient(135deg, var(--accent-gold), #d97706);
-      color: #111827;
-      border-color: transparent;
+      color: #111827; border-color: transparent;
+    }
+    .btn-emerald {
+      background: linear-gradient(135deg, var(--accent-emerald), #059669);
+      color: #04130d; border-color: transparent;
+    }
+    .btn-danger {
+      background: rgba(251, 113, 133, 0.18);
+      color: #fecdd3; border-color: rgba(251, 113, 133, 0.4);
     }
 
 
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 1.75rem 1.25rem 4rem; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 1.5rem 1.2rem 4rem; }
 
 
     .glass-panel {
       background: var(--glass-surface);
-      backdrop-filter: blur(24px) saturate(170%);
-      -webkit-backdrop-filter: blur(24px) saturate(170%);
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
       border: 1px solid var(--glass-border);
-      box-shadow: inset 0 1px 0 var(--glass-highlight), 0 18px 40px rgba(0, 0, 0, 0.22);
-      border-radius: 22px;
-      padding: 1.6rem;
-      margin-bottom: 1.5rem;
+      box-shadow: inset 0 1px 0 var(--glass-highlight), 0 16px 36px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      padding: 1.45rem;
+      margin-bottom: 1.35rem;
     }
 
 
     .hero-badge {
-      display: inline-block;
-      padding: 0.28rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent-gold);
-      background: rgba(251, 191, 36, 0.14);
-      border: 1px solid rgba(251, 191, 36, 0.32);
-      margin-bottom: 0.75rem;
+      display: inline-block; padding: 0.25rem 0.7rem; border-radius: 999px;
+      font-size: 0.73rem; font-weight: 700; color: var(--accent-gold);
+      background: rgba(251, 191, 36, 0.14); border: 1px solid rgba(251, 191, 36, 0.32);
+      margin-bottom: 0.65rem;
     }
 
 
-    h1 { font-size: clamp(1.55rem, 3vw, 2.25rem); line-height: 1.2; margin-bottom: 0.65rem; }
-    h2 { font-size: 1.22rem; margin-bottom: 0.45rem; }
-    p { color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.94rem; }
+    h1 { font-size: clamp(1.45rem, 2.8vw, 2.1rem); line-height: 1.2; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.18rem; margin-bottom: 0.35rem; }
+    h3 { font-size: 1rem; margin-bottom: 0.45rem; }
+    p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.85rem; }
 
 
     .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 0.9rem; margin-bottom: 1.35rem;
     }
-
-
     .stat-card {
-      background: var(--glass-card);
-      border: 1px solid var(--glass-border);
+      background: var(--glass-card); border: 1px solid var(--glass-border);
       box-shadow: inset 0 1px 0 var(--glass-highlight);
-      border-radius: 18px;
-      padding: 1.15rem;
+      border-radius: 16px; padding: 1rem;
+    }
+    .stat-num { font-size: 1.45rem; font-weight: 800; color: var(--accent-cyan); }
+    .stat-label { font-size: 0.78rem; color: var(--text-secondary); }
+
+
+    .app-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .app-layout { grid-template-columns: 1fr; }
     }
 
 
-    .stat-num { font-size: 1.55rem; font-weight: 800; color: var(--accent-cyan); }
-    .stat-label { font-size: 0.82rem; color: var(--text-secondary); }
+    .module-rail {
+      display: flex; flex-direction: column; gap: 0.45rem;
+      max-height: 78vh; overflow-y: auto; padding-right: 0.2rem;
+    }
 
 
-    .section-view { display: none; }
-    .section-view.active { display: block; }
+    .rail-item {
+      text-align: left; width: 100%;
+      background: var(--glass-card); border: 1px solid var(--glass-border);
+      border-radius: 13px; padding: 0.72rem 0.85rem; color: var(--text-primary);
+      cursor: pointer; transition: all 0.15s ease;
+    }
+    .rail-item:hover { border-color: var(--accent-cyan); }
+    .rail-item.active {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.24), rgba(2, 132, 199, 0.16));
+      border-color: var(--accent-cyan);
+    }
+    .rail-code { font-size: 0.7rem; font-weight: 800; color: var(--accent-gold); }
+    .rail-name { font-size: 0.86rem; font-weight: 700; display: block; }
+    .rail-count { font-size: 0.72rem; color: var(--text-secondary); }
 
 
-    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; }
-
-
+    label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.3rem; }
     input, select, textarea {
-      width: 100%;
-      padding: 0.68rem 0.85rem;
-      border-radius: 12px;
+      width: 100%; padding: 0.62rem 0.8rem; border-radius: 11px;
       border: 1px solid var(--glass-border);
-      background: rgba(2, 6, 23, 0.55);
-      color: var(--text-primary);
-      font-size: 0.9rem;
-      margin-bottom: 0.95rem;
+      background: rgba(2, 6, 23, 0.6); color: var(--text-primary);
+      font-size: 0.88rem; margin-bottom: 0.85rem;
     }
-
-
     body.light-glass input, body.light-glass select, body.light-glass textarea {
-      background: rgba(255, 255, 255, 0.78);
-      color: #0f172a;
+      background: rgba(255, 255, 255, 0.82); color: #0f172a;
     }
 
 
-    .two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.15rem; }
-    .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(235px, 1fr)); gap: 0.85rem; }
-
-
-    .mod-card {
-      background: var(--glass-card);
-      border: 1px solid var(--glass-border);
-      box-shadow: inset 0 1px 0 var(--glass-highlight);
-      border-radius: 16px;
-      padding: 1rem;
-      cursor: pointer;
-      transition: transform 0.16s ease, border-color 0.16s ease;
+    .form-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.85rem;
     }
 
 
-    .mod-card:hover { transform: translateY(-2px); border-color: var(--accent-cyan); }
-    .mod-code { font-size: 0.74rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 0.2rem; }
-    .mod-title { font-weight: 700; font-size: 0.96rem; margin-bottom: 0.25rem; }
-    .mod-desc { font-size: 0.8rem; color: var(--text-secondary); }
+    .file-drop {
+      border: 1.5px dashed rgba(56, 189, 248, 0.5);
+      background: rgba(56, 189, 248, 0.06);
+      border-radius: 13px; padding: 0.85rem; margin-bottom: 0.9rem;
+    }
+    .file-drop input[type="file"] { margin-bottom: 0.35rem; padding: 0.4rem; }
+    .file-meta { font-size: 0.78rem; color: var(--accent-emerald); }
 
 
-    .link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem; margin-top: 0.75rem; }
+    .table-wrap { width: 100%; overflow-x: auto; margin-top: 1rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+    th, td {
+      text-align: left; padding: 0.65rem 0.7rem;
+      border-bottom: 1px solid var(--glass-border); vertical-align: top;
+    }
+    th { color: var(--accent-gold); font-size: 0.76rem; text-transform: uppercase; }
 
 
-    .ext-link {
-      display: block;
-      text-decoration: none;
-      color: var(--text-primary);
-      background: var(--glass-card);
-      border: 1px solid var(--glass-border);
-      border-radius: 15px;
-      padding: 1rem;
-      transition: 0.18s ease;
+    .badge {
+      display: inline-block; padding: 0.2rem 0.55rem; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 700;
+      background: rgba(56, 189, 248, 0.16); color: var(--accent-cyan);
+    }
+    .badge-warn { background: rgba(251, 191, 36, 0.18); color: var(--accent-gold); }
+    .badge-ok { background: rgba(52, 211, 153, 0.18); color: var(--accent-emerald); }
+    .badge-high { background: rgba(251, 113, 133, 0.2); color: #fda4af; }
+
+
+    .action-row { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+
+
+    .notice {
+      padding: 0.85rem 1rem; border-radius: 12px; margin-top: 0.75rem;
+      background: rgba(52, 211, 153, 0.14); border: 1px solid rgba(52, 211, 153, 0.35);
+      font-size: 0.84rem;
     }
 
 
-    .ext-link:hover { border-color: var(--accent-emerald); transform: translateY(-2px); }
-    .ext-link strong { display: block; color: var(--accent-emerald); margin-bottom: 0.2rem; }
-    .ext-link span { font-size: 0.8rem; color: var(--text-secondary); }
-
-
-    .alert-box {
-      padding: 0.95rem 1.1rem;
-      border-radius: 14px;
-      background: rgba(52, 211, 153, 0.14);
-      border: 1px solid rgba(52, 211, 153, 0.35);
-      font-size: 0.88rem;
-      margin-top: 0.85rem;
+    .osint-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 0.75rem; margin-top: 0.75rem;
     }
+    .osint-card {
+      display: block; text-decoration: none; color: var(--text-primary);
+      background: var(--glass-card); border: 1px solid var(--glass-border);
+      border-radius: 13px; padding: 0.85rem;
+    }
+    .osint-card strong { display: block; color: var(--accent-emerald); font-size: 0.88rem; }
+    .osint-card span { font-size: 0.76rem; color: var(--text-secondary); }
 
 
-    .share-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.75rem; }
-    .share-bar input { flex: 1 1 260px; margin-bottom: 0; }
+    .view-pane { display: none; }
+    .view-pane.active { display: block; }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand" onclick="switchView('portal')">
-      <div class="brand-logo" id="logoBadge">GV</div>
+    <div class="brand" onclick="setTopTab('workspace')">
+      <div class="brand-logo">GV</div>
       <div>
-        <div class="brand-name" id="brandTitle">GOVRITY</div>
-        <div class="brand-tag">Governance, Integrity &amp; Intelligence Platform</div>
+        <div class="brand-name">GOVRITY</div>
+        <div class="brand-tag">14-Module Governance, Integrity &amp; Intelligence System</div>
       </div>
     </div>
 
 
     <nav class="nav-group">
-      <button class="btn active" id="nav-portal" onclick="switchView('portal')">Portal Aduan</button>
-      <button class="btn" id="nav-semak" onclick="switchView('semak')">Semak Status</button>
-      <button class="btn" id="nav-cio" onclick="switchView('cio')">Bilik Gerakan (14 Modul)</button>
-      <button class="btn" id="nav-risikan" onclick="switchView('risikan')">Risikan &amp; OSINT</button>
-      <button class="btn" id="nav-login" onclick="switchView('login')">Log Masuk</button>
-      <button class="btn btn-gold" onclick="toggleTheme()">Tema Kaca</button>
+      <button class="btn active" id="tab-workspace" onclick="setTopTab('workspace')">14 Modul &amp; Rekod</button>
+      <button class="btn" id="tab-aduan" onclick="setTopTab('aduan')">Portal Aduan Awam</button>
+      <button class="btn" id="tab-risikan" onclick="setTopTab('risikan')">OSINT &amp; Semakan</button>
+      <button class="btn" id="tab-audit" onclick="setTopTab('audit')">Jejak Audit &amp; Data</button>
+      <button class="btn btn-gold" onclick="toggleTheme()">Tema</button>
     </nav>
   </header>
 
 
   <main class="wrap">
     <section class="glass-panel">
-      <span class="hero-badge">INDEX.HTML · LIQUID GLASS UI</span>
-      <h1>Integriti, Tadbir Urus &amp; Pemantauan Risiko Bersepadu</h1>
+      <span class="hero-badge">SISTEM INTERAKTIF PENUH · LOCALSTORAGE + MUAT NAIK FAIL + CSV</span>
+      <h1>Bilik Gerakan &amp; Aplikasi Pengurusan 14 Modul Integriti</h1>
       <p>
-        Fail siap pakai <strong>index.html</strong> untuk dibuka terus di Google Chrome, diuji secara tempatan,
-        atau dimuat naik ke laman pengehosan web bagi dikongsi kepada pengguna lain.
+        Setiap modul (Modul 01 hingga Modul 14) mempunyai borang input sebenar, ruang muat naik lampiran fail
+        (nama fail, saiz, jenis, dan pratonton teks/imej/fail), kemas kini status, carian/tapis rekod,
+        simpanan automatik dalam pelayar (<code>localStorage</code>), serta eksport CSV.
       </p>
-
-
-      <div class="share-bar">
-        <input id="shareUrlInput" type="text" readonly value="Muat naik index.html ke hos web (cth. Netlify Drop) untuk pautan awam" />
-        <button class="btn btn-primary" onclick="copyShareUrl()">Salin Pautan</button>
-        <button class="btn" onclick="detectCurrentUrl()">Kesan URL Semasa</button>
+      <div class="action-row">
+        <button class="btn btn-emerald" onclick="exportCurrentModuleCSV()">Eksport CSV Modul Aktif</button>
+        <button class="btn" onclick="exportAllDataJSON()">Sandaran Penuh (JSON)</button>
+        <button class="btn btn-danger" onclick="resetDemoData()">Set Semula Data Contoh</button>
       </div>
-      <div id="shareFeedback" class="alert-box" style="display:none;"></div>
+      <div id="globalNotice" class="notice" style="display:none;"></div>
     </section>
 
 
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-num" id="statAduan">1</div>
-        <div class="stat-label">Rekod Tiket Aktif Sesi Ini</div>
+        <div class="stat-num" id="kpiTotalRecords">0</div>
+        <div class="stat-label">Jumlah Rekod merentasi 14 Modul</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">14</div>
-        <div class="stat-label">Modul Bersepadu Agensi</div>
+        <div class="stat-num" id="kpiActiveModCode">MOD-01</div>
+        <div class="stat-label" id="kpiActiveModName">Complaints Management</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Pangkalan Semakan &amp; OSINT</div>
+        <div class="stat-num" id="kpiActiveModCount">0</div>
+        <div class="stat-label">Rekod dalam Modul Aktif</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">24/7</div>
-        <div class="stat-label">Saluran Aduan &amp; Rujukan</div>
+        <div class="stat-num" id="kpiAuditCount">0</div>
+        <div class="stat-label">Entri Jejak Audit</div>
       </div>
     </div>
 
 
-    <section id="view-portal" class="section-view active">
+    <!-- VIEW 1: 14 MODULES WORKSPACE -->
+    <section id="view-workspace" class="view-pane active">
+      <div class="app-layout">
+        <aside class="glass-panel" style="padding:1rem;">
+          <h3>Senarai 14 Modul</h3>
+          <p style="font-size:0.78rem;">Pilih modul untuk mengisi data atau memuat naik fail.</p>
+          <div class="module-rail" id="moduleRail"></div>
+        </aside>
+
+
+        <div class="glass-panel" id="moduleWorkspace">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- VIEW 2: PUBLIC WHISTLEBLOWING & TICKET CHECK -->
+    <section id="view-aduan" class="view-pane">
       <div class="glass-panel">
-        <h2>Borang Aduan &amp; Perlindungan Pemberi Maklumat</h2>
-        <p>Pilih tahap kerahsiaan dan nyatakan butiran kejadian secara jelas.</p>
+        <h2>Portal Aduan Awam &amp; Semakan Tiket (Bersepadu Modul 01)</h2>
+        <p>Aduan yang dihantar di sini terus masuk ke dalam daftar <strong>Modul 01 (Complaints Management)</strong> dan boleh disemak melalui No. Tiket.</p>
 
 
-        <form id="formAduan" onsubmit="janaTiket(event)">
-          <div class="two-col">
+        <form id="publicComplaintForm" onsubmit="submitPublicComplaint(event)">
+          <div class="form-grid">
             <div>
-              <label for="kategoriAduan">Kategori Salah Laku / Isu</label>
-              <select id="kategoriAduan">
+              <label for="pubSubjek">Tajuk / Ringkasan Aduan</label>
+              <input id="pubSubjek" type="text" required placeholder="Contoh: Isu pemecahan sebutharga bekalan" />
+            </div>
+            <div>
+              <label for="pubKategori">Kategori Isu</label>
+              <select id="pubKategori">
                 <option value="Rasuah & Salah Guna Kuasa">Rasuah &amp; Salah Guna Kuasa</option>
-                <option value="Konflik Kepentingan (COI)">Konflik Kepentingan (COI)</option>
                 <option value="Ketidakaturan Perolehan">Ketidakaturan Perolehan</option>
+                <option value="Konflik Kepentingan (COI)">Konflik Kepentingan (COI)</option>
                 <option value="Pelanggaran Tatakelakuan">Pelanggaran Tatakelakuan</option>
-                <option value="Salah Guna Aset / Hadiah">Salah Guna Aset / Hadiah</option>
               </select>
             </div>
             <div>
-              <label for="modKerahsiaan">Pilihan Identiti</label>
-              <select id="modKerahsiaan">
+              <label for="pubIdentiti">Tahap Identiti</label>
+              <select id="pubIdentiti">
                 <option value="Tanpa Nama (Anonymous)">Tanpa Nama (Anonymous)</option>
-                <option value="Sulit (Ketua Unit Integriti / CIO)">Sulit (Ketua Unit Integriti / CIO)</option>
+                <option value="Sulit (CIO / KUI Sahaja)">Sulit (CIO / KUI Sahaja)</option>
                 <option value="Identiti Penuh">Identiti Penuh</option>
               </select>
             </div>
-          </div>
-
-
-          <div class="two-col">
             <div>
-              <label for="lokasiKejadian">Lokasi / Bahagian Terlibat</label>
-              <input id="lokasiKejadian" type="text" placeholder="Contoh: Unit Perolehan / Cawangan X" required />
-            </div>
-            <div>
-              <label for="tarikhKejadian">Tarikh Kejadian</label>
-              <input id="tarikhKejadian" type="date" required />
+              <label for="pubBahagian">Bahagian / Unit Terlibat</label>
+              <input id="pubBahagian" type="text" required placeholder="Contoh: Bahagian Kewangan / Cawangan" />
             </div>
           </div>
 
 
-          <label for="butiranKejadian">Keterangan Fakta Kejadian</label>
-          <textarea id="butiranKejadian" rows="4" placeholder="Jelaskan kronologi, pihak terlibat, dan bukti sokongan yang ada..." required></textarea>
+          <label for="pubFakta">Butiran Fakta (5W1H)</label>
+          <textarea id="pubFakta" rows="3" required placeholder="Nyatakan apa yang berlaku, bila, di mana, siapa terlibat, bagaimana dan mengapa..."></textarea>
 
 
-          <button class="btn btn-primary" type="submit">Hantar Aduan &amp; Jana Tiket</button>
+          <div class="file-drop">
+            <label for="pubFile">Muat Naik Dokumen / Bukti Sokongan (Pilihan)</label>
+            <input id="pubFile" type="file" onchange="handleFileInput(this, 'pubFilePreview')" />
+            <div id="pubFilePreview" class="file-meta">Tiada fail dipilih.</div>
+          </div>
+
+
+          <button class="btn btn-primary" type="submit">Hantar Aduan &amp; Jana No. Tiket</button>
         </form>
+        <div id="pubSubmitResult" class="notice" style="display:none;"></div>
 
 
-        <div id="hasilTiket" class="alert-box" style="display:none;"></div>
+        <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.5rem 0;" />
+
+
+        <h3>Semak Status Tiket Aduan</h3>
+        <div class="action-row">
+          <input id="checkTicketInput" type="text" value="ADU-2026-101" style="max-width:260px;margin-bottom:0;" />
+          <button class="btn btn-gold" onclick="checkPublicTicket()">Semak Tiket</button>
+        </div>
+        <div id="checkTicketResult" class="notice" style="display:none;"></div>
       </div>
     </section>
 
 
-    <section id="view-semak" class="section-view">
+    <!-- VIEW 3: OSINT & EXTERNAL VERIFICATION -->
+    <section id="view-risikan" class="view-pane">
       <div class="glass-panel">
-        <h2>Semakan Status Aduan</h2>
-        <p>Masukkan No. Tiket untuk menyemak status terkini (contoh: <strong>GOV-2026-1001</strong>).</p>
+        <h2>Hab Risikan Terbuka (OSINT) &amp; Semakan Entiti (Bersepadu Modul 12)</h2>
+        <p>Masukkan kata kunci entiti, nombor pendaftaran, atau e-mel, salin kata kunci, dan buka pangkalan data rasmi/terbuka di tab baharu. Anda juga boleh menyimpan nota semakan terus ke Modul 12.</p>
 
 
-        <form onsubmit="semakStatusTiket(event)">
-          <label for="inputSemakTiket">No. Tiket Aduan</label>
-          <input id="inputSemakTiket" type="text" value="GOV-2026-1001" required />
-          <button class="btn btn-primary" type="submit">Semak Sekarang</button>
-        </form>
+        <div class="form-grid">
+          <div>
+            <label for="osintQuery">Kata Kunci Entiti / Syarikat / No. Pendaftaran</label>
+            <input id="osintQuery" type="text" placeholder="Contoh: Syarikat Maju Jaya Sdn Bhd / 202001012345" />
+          </div>
+          <div>
+            <label for="osintNote">Catatan Awal Semakan</label>
+            <input id="osintNote" type="text" placeholder="Contoh: Semak pengarah & status pendaftaran perolehan" />
+          </div>
+        </div>
+        <div class="action-row">
+          <button class="btn btn-gold" onclick="copyOsintQuery()">Salin Kata Kunci</button>
+          <button class="btn btn-primary" onclick="saveOsintToMod12()">Simpan Semakan ke Modul 12 (IDD)</button>
+        </div>
 
 
-        <div id="hasilSemak" class="alert-box" style="display:none;"></div>
-      </div>
-    </section>
-
-
-    <section id="view-cio" class="section-view">
-      <div class="glass-panel">
-        <h2>Bilik Gerakan Ketua Pegawai Integriti — 14 Modul Bersepadu</h2>
-        <p>Klik mana-mana kad modul di bawah untuk melihat ringkasan fungsi dalam operasi agensi.</p>
-
-
-        <div class="modules-grid" id="modulesGrid"></div>
-        <div id="modulDetail" class="alert-box" style="display:none;"></div>
-      </div>
-    </section>
-
-
-    <section id="view-risikan" class="section-view">
-      <div class="glass-panel">
-        <h2>Semakan Perolehan, Profil Syarikat &amp; Risikan Terbuka (OSINT)</h2>
-        <p>Masukkan nama syarikat, nombor pendaftaran, atau kata kunci untuk membantu rujukan semakan luaran.</p>
-
-
-        <label for="kataKunciRisikan">Kata Kunci Carian (Nama Syarikat / No. Rujukan / E-mel)</label>
-        <input id="kataKunciRisikan" type="text" placeholder="Contoh: Mega Bina Sdn Bhd atau QT2026001" />
-        <button class="btn btn-gold" onclick="salinKataKunci()">Salin Kata Kunci Carian</button>
-
-
-        <div class="link-grid">
-          <a class="ext-link" href="https://myprocurement.treasury.gov.my/" target="_blank" rel="noopener noreferrer">
+        <div class="osint-grid">
+          <a class="osint-card" href="https://myprocurement.treasury.gov.my/" target="_blank" rel="noopener noreferrer">
             <strong>MyProcurement (MOF)</strong>
-            <span>Rujukan maklumat perolehan &amp; sebutharga/tender kerajaan.</span>
+            <span>Maklumat tender, sebutharga &amp; perolehan kerajaan.</span>
           </a>
-          <a class="ext-link" href="https://www.ssm-einfo.my/index.php" target="_blank" rel="noopener noreferrer">
+          <a class="osint-card" href="https://www.ssm-einfo.my/index.php" target="_blank" rel="noopener noreferrer">
             <strong>SSM e-Info</strong>
-            <span>Semakan maklumat korporat, pengarah &amp; pemegang saham syarikat.</span>
+            <span>Profil syarikat, pengarah, pemegang saham &amp; status.</span>
           </a>
-          <a class="ext-link" href="https://mcp.cidb.gov.my/MCP/ContractorSearch" target="_blank" rel="noopener noreferrer">
+          <a class="osint-card" href="https://mcp.cidb.gov.my/MCP/ContractorSearch" target="_blank" rel="noopener noreferrer">
             <strong>CIDB Contractor Search</strong>
-            <span>Semakan pendaftaran, gred &amp; status kontraktor binaan.</span>
+            <span>Semakan gred, pendaftaran &amp; status kontraktor.</span>
           </a>
-          <a class="ext-link" href="https://opencorporates.com/" target="_blank" rel="noopener noreferrer">
+          <a class="osint-card" href="https://opencorporates.com/" target="_blank" rel="noopener noreferrer">
             <strong>OpenCorporates</strong>
-            <span>Carian pangkalan data entiti korporat &amp; rangkaian syarikat.</span>
+            <span>Carian pangkalan data korporat &amp; entiti berkaitan.</span>
           </a>
-          <a class="ext-link" href="https://app.osint.industries/" target="_blank" rel="noopener noreferrer">
+          <a class="osint-card" href="https://app.osint.industries/" target="_blank" rel="noopener noreferrer">
             <strong>OSINT Industries</strong>
-            <span>Semakan jejak maklumat terbuka berdasarkan e-mel, telefon atau identiti.</span>
+            <span>Semakan jejak maklumat terbuka e-mel / identiti.</span>
           </a>
         </div>
-        <div id="risikanFeedback" class="alert-box" style="display:none;"></div>
+        <div id="osintNotice" class="notice" style="display:none;"></div>
       </div>
     </section>
 
 
-    <section id="view-login" class="section-view">
+    <!-- VIEW 4: AUDIT LOG & DATA MANAGEMENT -->
+    <section id="view-audit" class="view-pane">
       <div class="glass-panel">
-        <h2>Log Masuk Pegawai &amp; Pentadbir</h2>
-        <p>Antaramuka log masuk dalaman untuk akses modul pentadbiran dan bilik gerakan integriti.</p>
-
-
-        <form onsubmit="prosesLogin(event)">
-          <label for="perananLogin">Peranan Pengguna</label>
-          <select id="perananLogin">
-            <option value="Ketua Pegawai Integriti (CIO / KUI)">Ketua Pegawai Integriti (CIO / KUI)</option>
-            <option value="Pegawai Integriti (Pengesanan & Pengesahan)">Pegawai Integriti (Pengesanan &amp; Pengesahan)</option>
-            <option value="Urus Setia Tatatertib & Pematuhan">Urus Setia Tatatertib &amp; Pematuhan</option>
-          </select>
-
-
-          <label for="emelLogin">ID Pengguna / E-mel Rasmi</label>
-          <input id="emelLogin" type="email" placeholder="pegawai@agensi.gov.my" required />
-
-
-          <label for="katalaluanLogin">Kata Laluan</label>
-          <input id="katalaluanLogin" type="password" placeholder="••••••••" required />
-
-
-          <button class="btn btn-primary" type="submit">Log Masuk ke Bilik Gerakan</button>
-        </form>
-        <div id="loginFeedback" class="alert-box" style="display:none;"></div>
+        <h2>Jejak Audit Sistem &amp; Pengurusan Data</h2>
+        <p>Setiap penambahan, kemas kini status, muat naik fail, atau pemadaman rekod dicatatkan secara automatik.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Masa</th>
+                <th>Modul</th>
+                <th>Tindakan</th>
+                <th>Butiran</th>
+              </tr>
+            </thead>
+            <tbody id="auditTableBody"></tbody>
+          </table>
+        </div>
       </div>
     </section>
   </main>
 
 
   <script>
-    const senaraiModul = [
-      { kod: "MODUL 01", nama: "Complaints Management", fokus: "Penerimaan, saringan aduan & penilaian maklumat (JMM)." },
-      { kod: "MODUL 02", nama: "Detection & Verification", fokus: "Pengesanan, pengesahan fakta, kertas kes & diari tindakan." },
-      { kod: "MODUL 03", nama: "Disciplinary Management", fokus: "Pengurusan kes tatatertib, representasi & keputusan lembaga." },
-      { kod: "MODUL 04", nama: "Support Letter Management", fokus: "Pemantauan & kawalan permohonan surat sokongan." },
-      { kod: "MODUL 05", nama: "Asset Declaration (HAD)", fokus: "Rekod & semakan pematuhan pengisytiharan harta." },
-      { kod: "MODUL 06", nama: "Conflict of Interest (COI)", fokus: "Pengenalpastian & mitigasi konflik kepentingan." },
-      { kod: "MODUL 07", nama: "Gifts, Hospitality & Sponsorship", fokus: "Daftar penerimaan hadiah, keraian & penajaan." },
-      { kod: "MODUL 08", nama: "Governance Management", fokus: "Pelan antirasuah, mesyuarat jawatankuasa & kawalan tadbir urus." },
-      { kod: "MODUL 09", nama: "Compliance Management", fokus: "Pemeriksaan pematuhan berjadual/mengejut & semakan SOP." },
-      { kod: "MODUL 10", nama: "Integrity Strengthening", fokus: "Latihan, kesedaran, advokasi & pembudayaan integriti." },
-      { kod: "MODUL 11", nama: "Integrity Pact", fokus: "Komitmen integriti pembekal, kontraktor & rakan strategik." },
-      { kod: "MODUL 12", nama: "Integrity Due Diligence (IDD)", fokus: "Semakan wajar entiti, rakan niaga & risikan latar belakang." },
-      { kod: "MODUL 13", nama: "Corruption Risk Management", fokus: "Penilaian risiko rasuah & pelan tindakan kawalan risiko." },
-      { kod: "MODUL 14", nama: "E-IBI & PROTECT", fokus: "Indeks tingkah laku integriti & pemantauan amaran awal." }
+    const STORAGE_KEY = "govrity_14mod_state_v1";
+
+
+    const MODULES_CONFIG = [
+      {
+        id: "m01", code: "MOD-01", name: "Complaints Management",
+        desc: "Penerimaan aduan, penilaian awal JMM, klasifikasi risiko & rujukan kes.",
+        fields: [
+          { key: "title", label: "Tajuk / Rujukan Aduan", type: "text", placeholder: "Contoh: Aduan ketidaktelusan penilaian sebutharga" },
+          { key: "party", label: "Bahagian / Pihak Terlibat", type: "text", placeholder: "Contoh: Unit Perolehan" },
+          { key: "category", label: "Kategori Aduan", type: "select", options: ["Rasuah & Salah Guna Kuasa", "Ketidakaturan Perolehan", "Konflik Kepentingan", "Pelanggaran Tatakelakuan"] },
+          { key: "risk", label: "Tahap Risiko / Prioriti", type: "select", options: ["Rendah", "Sederhana", "Tinggi", "Kritikal"] },
+          { key: "status", label: "Status Semasa", type: "select", options: ["Baharu / Saringan JMM", "Dalam Penilaian", "Dirujuk ke P&P", "Selesai / Ditutup"] },
+          { key: "notes", label: "Ringkasan Fakta & Syor JMM", type: "textarea", placeholder: "Catatkan fakta utama, tarikh/lokasi serta syor tindakan..." }
+        ]
+      },
+      {
+        id: "m02", code: "MOD-02", name: "Detection & Verification",
+        desc: "Pengesanan awal, pengesahan fakta, semakan dokumen & kertas pengesanan.",
+        fields: [
+          { key: "title", label: "Tajuk Kes / Pengesanan", type: "text", placeholder: "Contoh: Pengesahan tuntutan perjalanan luar kawasan" },
+          { key: "party", label: "Pegawai / Unit Disemak", type: "text", placeholder: "Contoh: Cawangan Operasi" },
+          { key: "category", label: "Kaedah Pengesanan", type: "select", options: ["Analisis Data / Anomali", "Semakan Dokumen & Baucar", "Aduan / Risikan Awal", "Pemeriksaan Lapangan"] },
+          { key: "risk", label: "Tahap Risiko", type: "select", options: ["Rendah", "Sederhana", "Tinggi", "Kritikal"] },
+          { key: "status", label: "Status Pengesahan", type: "select", options: ["Sedang Disahkan", "Fakta Disokong", "Tidak Berasas", "Diserahkan ke Tatatertib"] },
+          { key: "notes", label: "Penemuan Fakta & Jejak Semakan", type: "textarea", placeholder: "Rekodkan hasil semakan dokumen, temubual awal dan bukti..." }
+        ]
+      },
+      {
+        id: "m03", code: "MOD-03", name: "Disciplinary Management",
+        desc: "Pengurusan kes tatatertib, surat tunjuk sebab, representasi & keputusan lembaga.",
+        fields: [
+          { key: "title", label: "Rujukan Kes Tatatertib", type: "text", placeholder: "Contoh: Kes Tatatertib P.O. 3(2)(b) — Ketidakhadiran" },
+          { key: "party", label: "Pegawai Terlibat / Jawatan", type: "text", placeholder: "Contoh: Pegawai Gred 29" },
+          { key: "category", label: "Jenis Pelanggaran", type: "select", options: ["Tidak Hadir Bertugas", "Ingkar Perintah / SOP", "Salah Guna Kemudahan", "Kelakuan Memburukkan Nama"] },
+          { key: "risk", label: "Kategori Hukuman / Keseriusan", type: "select", options: ["Amaran / Kaunseling", "Denda / Lucut Hak Emolumen", "Tangguh / Turun Pergerakan Gaji", "Buang Kerja / Turun Pangkat"] },
+          { key: "status", label: "Status Prosiding", type: "select", options: ["Notis / Tunjuk Sebab", "Menunggu Representasi", "Mesyuarat Lembaga Tatatertib", "Keputusan Dikeluarkan"] },
+          { key: "notes", label: "Catatan Prosiding & Keputusan", type: "textarea", placeholder: "Catatkan tarikh notis, jawapan representasi dan keputusan..." }
+        ]
+      },
+      {
+        id: "m04", code: "MOD-04", name: "Support Letter Management",
+        desc: "Kawalan, saringan dan pemantauan permohonan serta pengeluaran surat sokongan.",
+        fields: [
+          { key: "title", label: "Perkara Permohonan Sokongan", type: "text", placeholder: "Contoh: Permohonan sokongan tender / biasiswa / penempatan" },
+          { key: "party", label: "Pemohon / Entiti Berkaitan", type: "text", placeholder: "Contoh: Syarikat / Individu" },
+          { key: "category", label: "Jenis Sokongan", type: "select", options: ["Perolehan / Kontrak", "Kenaikan Pangkat / Penempatan", "Biasiswa / Latihan / Bantuan", "Lain-lain Urusan Rasmi"] },
+          { key: "risk", label: "Risiko Konflik / Pengaruh", type: "select", options: ["Rendah", "Sederhana", "Tinggi", "Kritikal"] },
+          { key: "status", label: "Status Permohonan", type: "select", options: ["Dalam Semakan Integriti", "Disokong dengan Syarat", "Tidak Disokong / Ditolak", "Diarkibkan"] },
+          { key: "notes", label: "Justifikasi & Kawalan Integriti", type: "textarea", placeholder: "Nyatakan semakan kepentingan dan syarat pemantauan..." }
+        ]
+      },
+      {
+        id: "m05", code: "MOD-05", name: "Asset Declaration (HAD)",
+        desc: "Pengurusan rekod pengisytiharan harta pegawai, semakan pematuhan & perubahan aset.",
+        fields: [
+          { key: "title", label: "Rujukan Isytihar Harta", type: "text", placeholder: "Contoh: Pengisytiharan Harta Tahunan 2026" },
+          { key: "party", label: "Pegawai / Bahagian", type: "text", placeholder: "Contoh: Pegawai Pengurusan & Profesional" },
+          { key: "category", label: "Jenis Pengisytiharan", type: "select", options: ["Pengisytiharan Baharu / Lantikan", "Semakan Berkala (5 Tahun)", "Pelupusan / Perolehan Harta Baharu", "Perubahan Tanggungan / Pendapatan"] },
+          { key: "risk", label: "Status Semakan Kewajaran", type: "select", options: ["Selaras Pendapatan", "Perlu Penjelasan Tambahan", "Anomali Diperhatikan", "Kritikal"] },
+          { key: "status", label: "Status Pematuhan", type: "select", options: ["Dihantar & Lengkap", "Menunggu Dokumen Sokongan", "Disahkan Urus Setia", "Lewat Tempoh"] },
+          { key: "notes", label: "Butiran Aset & Semakan Urus Setia", type: "textarea", placeholder: "Catatkan jenis harta, sumber pembiayaan dan status semakan..." }
+        ]
+      },
+      {
+        id: "m06", code: "MOD-06", name: "Conflict of Interest (COI)",
+        desc: "Pendaftaran, saringan dan pelan pengurusan konflik kepentingan dalam keputusan rasmi.",
+        fields: [
+          { key: "title", label: "Isu / Urusan Konflik Kepentingan", type: "text", placeholder: "Contoh: Ahli keluarga dalam syarikat pembekal" },
+          { key: "party", label: "Pegawai / Pihak Berkaitan", type: "text", placeholder: "Contoh: Ahli Jawatankuasa Penilaian" },
+          { key: "category", label: "Jenis Konflik", type: "select", options: ["Kepentingan Kewangan / Saham", "Hubungan Keluarga / Persaudaraan", "Jawatan Luar / Lembaga Pengarah", "Kepentingan Peribadi / Pihak Ketiga"] },
+          { key: "risk", label: "Tahap Konflik", type: "select", options: ["Rendah", "Sederhana", "Tinggi", "Kritikal"] },
+          { key: "status", label: "Tindakan Mitigasi", type: "select", options: ["Diisytiharkan", "Menarik Diri (Recusal) dari Mesyuarat", "Diteruskan dengan Kawalan", "Selesai"] },
+          { key: "notes", label: "Langkah Pencegahan & Penarikan Diri", type: "textarea", placeholder: "Rekodkan tindakan recusal atau kawalan akses maklumat..." }
+        ]
+      },
+      {
+        id: "m07", code: "MOD-07", name: "Gifts, Hospitality & Sponsorship",
+        desc: "Daftar penerimaan atau penolakan hadiah, keraian, perjalanan & penajaan.",
+        fields: [
+          { key: "title", label: "Perkara Hadiah / Keraian / Tajaan", type: "text", placeholder: "Contoh: Jemputan jamuan / cenderamata / penajaan program" },
+          { key: "party", label: "Pemberi / Penaja & Penerima", type: "text", placeholder: "Contoh: Pembekal XYZ kepada Pegawai A" },
+          { key: "category", label: "Kategori", type: "select", options: ["Hadiah / Cenderamata", "Keraian / Jamuan", "Penajaan Acara / Program", "Kemudahan / Perjalanan"] },
+          { key: "risk", label: "Penilaian Risiko Rasuah", type: "select", options: ["Rendah", "Sederhana", "Tinggi", "Kritikal"] },
+          { key: "status", label: "Status Tindakan", type: "select", options: ["Ditolak & Dipulangkan", "Diserahkan kepada Agensi", "Diluluskan dengan Syarat", "Dalam Semakan"] },
+          { key: "notes", label: "Anggaran Nilai & Keputusan", type: "textarea", placeholder: "Nyatakan anggaran nilai, hubungan urusan dan keputusan..." }
+        ]
+      },
+      {
+        id: "m08", code: "MOD-08", name: "Governance Management",
+        desc: "Pengurusan OACP, mesyuarat Jawatankuasa Integriti & Tadbir Urus (JITU), dan kawalan dasar.",
+        fields: [
+          { key: "title", label: "Inisiatif / Agenda Tadbir Urus", type: "text", placeholder: "Contoh: Mesyuarat JITU / Semakan Pelan Antirasuah (OACP)" },
+          { key: "party", label: "Bahagian Peneraju / Jawatankuasa", type: "text", placeholder: "Contoh: Bahagian Dasar & Tadbir Urus" },
+          { key: "category", label: "Bidang Tadbir Urus", type: "select", options: ["Pelan Antirasuah Organisasi (OACP)", "Mesyuarat JITU / Jawatankuasa", "Dasar / Pekeliling Dalaman", "Pemantauan KPI Tadbir Urus"] },
+          { key: "risk", label: "Kepentingan Strategik", type: "select", options: ["Sederhana", "Tinggi", "Kritikal"] },
+          { key: "status", label: "Status Pelaksanaan", type: "select", options: ["Dalam Perancangan", "Sedang Dilaksanakan", "Dipantau Berkala", "Dicapai / Selesai"] },
+          { key: "notes", label: "Keputusan Mesyuarat & Tindakan Susulan", type: "textarea", placeholder: "Rekodkan tarikh mesyuarat, ketetapan dan pemilik tindakan..." }
+        ]
+      },
+      {
+        id: "m09", code: "MOD-09", name: "Compliance Management",
+        desc: "Pemeriksaan pematuhan, naziran SOP, audit dalaman pematuhan & tindakan pembetulan (CAPA).",
+        fields: [
+          { key: "title", label: "Tajuk Pemeriksaan / Naziran", type: "text", placeholder: "Contoh: Naziran pematuhan SOP kaunter & rekod fail" },
+          { key: "party", label: "Lokasi / Unit Diperiksa", type: "text", placeholder: "Contoh: Pejabat Cawangan / Depot" },
+          { key: "category", label: "Jenis Pematuhan", type: "select", options: ["Pemeriksaan Berjadual", "Naziran Mengejut", "Pematuhan SOP & Peraturan", "Tindakan Pembetulan (CAPA)"] },
+          { key: "risk", label: "Tahap Ketidakpatuhan", type: "select", options: ["Tiada / Patuh", "Minor / Sederhana", "Major / Tinggi", "Kritikal"] },
+          { key: "status", label: "Status Tindakan", type: "select", options: ["Pemeriksaan Selesai", "Menunggu CAPA", "CAPA Sedang Dilaksana", "Disahkan Patuh"] },
+          { key: "notes", label: "Dapatan Naziran & Pelan Pembetulan", type: "textarea", placeholder: "Catatkan ketidakpatuhan ditemui, punca dan tempoh pembetulan..." }
+        ]
+      },
+      {
+        id: "m10", code: "MOD-10", name: "Integrity Strengthening",
+        desc: "Program latihan, bengkel integriti, ceramah kesedaran & pembudayaan nilai murni.",
+        fields: [
+          { key: "title", label: "Nama Program / Latihan", type: "text", placeholder: "Contoh: Kursus Pengukuhan Integriti & Anti-Rasuah" },
+          { key: "party", label: "Kumpulan Sasaran / Penganjur", type: "text", placeholder: "Contoh: Semua Warga Kerja Agensi" },
+          { key: "category", label: "Bentuk Pengukuhan", type: "select", options: ["Kursus / Bengkel Latihan", "Ceramah / Taklimat Kesedaran", "Kempen / Penerbitan Infografik", "Sesi Pembudayaan Nilai"] },
+          { key: "risk", label: "Liputan Sasaran", type: "select", options: ["Bahagian Khusus", "Cawangan / Wilayah", "Seluruh Agensi"] },
+          { key: "status", label: "Status Program", type: "select", options: ["Dirancang", "Sedang Berjalan", "Selesai Dilaksanakan", "Penilaian Impak"] },
+          { key: "notes", label: "Bilangan Peserta, Tarikh & Maklum Balas", type: "textarea", placeholder: "Rekodkan tarikh program, kehadiran dan rumusan maklum balas..." }
+        ]
+      },
+      {
+        id: "m11", code: "MOD-11", name: "Integrity Pact",
+        desc: "Pengurusan Ikrar / Pakatan Integriti pembekal, kontraktor, panel & rakan strategik.",
+        fields: [
+          { key: "title", label: "Rujukan Pakatan / Ikrar Integriti", type: "text", placeholder: "Contoh: Ikrar Integriti Perolehan / Kontrak Pembekalan" },
+          { key: "party", label: "Syarikat / Pembekal / Rakan", type: "text", placeholder: "Contoh: Syarikat Pembekal / Kontraktor" },
+          { key: "category", label: "Konteks Pakatan", type: "select", options: ["Tender / Sebutharga", "Kontrak Perkhidmatan / Bekalan", "Memorandum Persefahaman (MoU)", "Rakan Strategik / Vendor"] },
+          { key: "risk", label: "Tahap Pematuhan Kontrak", type: "select", options: ["Rendah", "Sederhana", "Tinggi"] },
+          { key: "status", label: "Status Tandatangan", type: "select", options: ["Menunggu Tandatangan", "Ditandatangani & Disahkan", "Perlu Pembaharuan", "Pelanggaran Ikrar"] },
+          { key: "notes", label: "Tarikh Tandatangan & Catatan Komitmen", type: "textarea", placeholder: "Catatkan tarikh aku janji, nama wakil dan pemantauan..." }
+        ]
+      },
+      {
+        id: "m12", code: "MOD-12", name: "Integrity Due Diligence (IDD)",
+        desc: "Semakan wajar integriti ke atas bakal rakan niaga, pembekal, kontraktor atau pelantikan strategik.",
+        fields: [
+          { key: "title", label: "Entiti / Individu Disemak", type: "text", placeholder: "Contoh: Semakan IDD Syarikat Pembekal / Rakan Niaga" },
+          { key: "party", label: "No. Pendaftaran / Rujukan", type: "text", placeholder: "Contoh: SSM / MOF / CIDB / Rujukan Kes" },
+          { key: "category", label: "Sumber & Skop Semakan", type: "select", options: ["Profil Korporat (SSM / OpenCorporates)", "Perolehan & Kontraktor (MOF / CIDB)", "Risikan Terbuka (OSINT)", "Semakan Latar Belakang Menyeluruh"] },
+          { key: "risk", label: "Penarafan Risiko IDD", type: "select", options: ["Risiko Rendah", "Risiko Sederhana", "Risiko Tinggi", "Red Flag / Tidak Disyorkan"] },
+          { key: "status", label: "Status Penilaian IDD", type: "select", options: ["Dalam Semakan", "Lulus Semakan Wajar", "Lulus Bersyarat / Pemantauan", "Tidak Diperakui"] },
+          { key: "notes", label: "Dapatan Semakan & Syor IDD", type: "textarea", placeholder: "Rekodkan pemilikan, rekod terdahulu, red flag dan syor..." }
+        ]
+      },
+      {
+        id: "m13", code: "MOD-13", name: "Corruption Risk Management",
+        desc: "Penilaian risiko rasuah (CRM), daftar risiko, kawalan sedia ada & pelan mitigasi.",
+        fields: [
+          { key: "title", label: "Risiko Rasuah Diidentifikasi", type: "text", placeholder: "Contoh: Risiko manipulasi spesifikasi / bayaran lewat" },
+          { key: "party", label: "Proses / Unit Pemilik Risiko", type: "text", placeholder: "Contoh: Proses Perolehan & Pembayaran" },
+          { key: "category", label: "Kategori Risiko Rasuah", type: "select", options: ["Perolehan & Kontrak", "Perlesenan / Kelulusan / Penguatkuasaan", "Kewangan & Pengurusan Aset", "Sumber Manusia & Pentadbiran"] },
+          { key: "risk", label: "Skor / Tahap Risiko", type: "select", options: ["Rendah", "Sederhana", "Tinggi", "Kritikal / Ekstrem"] },
+          { key: "status", label: "Status Mitigasi", type: "select", options: ["Risiko Baharu", "Kawalan Sedang Dilaksana", "Dipantau Berkala", "Risiko Berkurang"] },
+          { key: "notes", label: "Kawalan Sedia Ada & Pelan Tindakan", type: "textarea", placeholder: "Nyatakan kebarangkalian, impak, kawalan dan tarikh sasaran..." }
+        ]
+      },
+      {
+        id: "m14", code: "MOD-14", name: "E-IBI & PROTECT",
+        desc: "Indeks Tingkah Laku Integriti (E-IBI) dan pemantauan amaran awal (PROTECT) agensi.",
+        fields: [
+          { key: "title", label: "Indikator / Isyarat Amaran Awal", type: "text", placeholder: "Contoh: Indeks E-IBI Unit / Lonjakan Aduan atau Lewat Isytihar" },
+          { key: "party", label: "Unit / Zon Dipantau", type: "text", placeholder: "Contoh: Bahagian / Cawangan / Wilayah" },
+          { key: "category", label: "Komponen Pemantauan", type: "select", options: ["Skor Indeks E-IBI", "Amaran Awal PROTECT — Aduan / Kes", "Amaran Awal PROTECT — Pematuhan / Kewangan", "Laporan Eksekutif Berkala"] },
+          { key: "risk", label: "Tahap Isyarat Radar", type: "select", options: ["Hijau (Normal)", "Kuning (Perhatian Awal)", "Jingga (Waspada Tinggi)", "Merah (Tindakan Segera)"] },
+          { key: "status", label: "Status Pemantauan", type: "select", options: ["Aktif Dipantau", "Isyarat Disahkan", "Intervensi Dijalankan", "Stabil"] },
+          { key: "notes", label: "Analisis Indikator & Intervensi", type: "textarea", placeholder: "Catatkan nilai indeks, trend dan langkah intervensi..." }
+        ]
+      }
     ];
 
 
-    const pangkalanTiket = {
-      "GOV-2026-1001": {
-        kategori: "Ketidakaturan Perolehan",
-        status: "Dalam Penilaian Awal Unit Integriti"
+    function defaultState() {
+      const records = {};
+      MODULES_CONFIG.forEach((m) => { records[m.id] = []; });
+
+
+      records.m01.push({
+        id: "ADU-2026-101",
+        title: "Semakan aduan proses sebutharga pembekalan",
+        party: "Unit Perolehan",
+        category: "Ketidakaturan Perolehan",
+        risk: "Tinggi",
+        status: "Dalam Penilaian",
+        notes: "Aduan diterima untuk saringan awal JMM dan semakan dokumen berkaitan.",
+        attachment: null,
+        createdAt: "2026-11-23 09:15"
+      });
+
+
+      records.m05.push({
+        id: "HAD-2026-201",
+        title: "Pengisytiharan Harta Tahunan 2026",
+        party: "Pegawai Bahagian Pentadbiran",
+        category: "Semakan Berkala (5 Tahun)",
+        risk: "Rendah",
+        status: "Disahkan Urus Setia",
+        notes: "Rekod aset dan tanggungan direkodkan serta disemak lengkap.",
+        attachment: null,
+        createdAt: "2026-11-23 10:05"
+      });
+
+
+      records.m12.push({
+        id: "IDD-2026-301",
+        title: "Semakan wajar pembekal perkhidmatan IT",
+        party: "SSM / MOF",
+        category: "Profil Korporat (SSM / OpenCorporates)",
+        risk: "Risiko Sederhana",
+        status: "Dalam Semakan",
+        notes: "Sedang menyemak profil syarikat dan rekod pendaftaran perolehan.",
+        attachment: null,
+        createdAt: "2026-11-23 11:20"
+      });
+
+
+      return {
+        activeModuleId: "m01",
+        pendingAttachment: null,
+        records,
+        audit: [
+          {
+            time: "2026-11-23 09:15",
+            module: "MOD-01",
+            action: "Rekod Awal",
+            detail: "Tiket contoh ADU-2026-101 sedia untuk semakan."
+          }
+        ]
+      };
+    }
+
+
+    let state = loadState();
+
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return defaultState();
+        const parsed = JSON.parse(raw);
+        if (!parsed.records) return defaultState();
+        MODULES_CONFIG.forEach((m) => {
+          if (!Array.isArray(parsed.records[m.id])) parsed.records[m.id] = [];
+        });
+        return parsed;
+      } catch {
+        return defaultState();
       }
-    };
-
-
-    function renderModul() {
-      const grid = document.getElementById("modulesGrid");
-      grid.innerHTML = senaraiModul.map((m, idx) => `
-        <div class="mod-card" onclick="pilihModul(${idx})">
-          <div class="mod-code">${m.kod}</div>
-          <div class="mod-title">${m.nama}</div>
-          <div class="mod-desc">${m.fokus}</div>
-        </div>
-      `).join("");
     }
 
 
-    function pilihModul(idx) {
-      const m = senaraiModul[idx];
-      const box = document.getElementById("modulDetail");
-      box.style.display = "block";
-      box.innerHTML = `<strong>${m.kod} — ${m.nama}</strong><br>${m.fokus}`;
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (err) {
+        showNotice("Amaran: Storan pelayar penuh. Eksport sandaran JSON secara berkala.", true);
+      }
     }
 
 
-    function switchView(viewName) {
-      document.querySelectorAll(".section-view").forEach((el) => el.classList.remove("active"));
-      const target = document.getElementById("view-" + viewName);
-      if (target) target.classList.add("active");
+    function addAudit(moduleCode, action, detail) {
+      const now = new Date();
+      const stamp = now.toISOString().replace("T", " ").substring(0, 16);
+      state.audit.unshift({ time: stamp, module: moduleCode, action, detail });
+      if (state.audit.length > 200) state.audit.pop();
+      saveState();
+      renderAudit();
+      updateKPIs();
+    }
 
 
-      document.querySelectorAll(".nav-group .btn").forEach((b) => b.classList.remove("active"));
-      const activeBtn = document.getElementById("nav-" + viewName);
-      if (activeBtn) activeBtn.classList.add("active");
+    function showNotice(msg, isError = false) {
+      const el = document.getElementById("globalNotice");
+      el.style.display = "block";
+      el.style.background = isError ? "rgba(251, 113, 133, 0.16)" : "rgba(52, 211, 153, 0.14)";
+      el.style.borderColor = isError ? "rgba(251, 113, 133, 0.4)" : "rgba(52, 211, 153, 0.35)";
+      el.innerHTML = msg;
     }
 
 
@@ -529,94 +762,532 @@
     }
 
 
-    function detectCurrentUrl() {
-      const input = document.getElementById("shareUrlInput");
-      const fb = document.getElementById("shareFeedback");
-      const current = window.location.href;
-      input.value = current;
-      fb.style.display = "block";
-      fb.innerHTML = current.startsWith("http")
-        ? `Pautan aktif dikesan: <strong>${current}</strong>`
-        : "Fail sedang dibuka secara tempatan (<code>file://</code>). Muat naik <code>index.html</code> ke hos web seperti Netlify Drop untuk pautan yang boleh diakses semua orang.";
+    function setTopTab(tab) {
+      document.querySelectorAll(".view-pane").forEach((p) => p.classList.remove("active"));
+      document.getElementById("view-" + tab).classList.add("active");
+      document.querySelectorAll(".topbar .btn").forEach((b) => b.classList.remove("active"));
+      const btn = document.getElementById("tab-" + tab);
+      if (btn) btn.classList.add("active");
     }
 
 
-    function copyShareUrl() {
-      const input = document.getElementById("shareUrlInput");
-      const fb = document.getElementById("shareFeedback");
-      navigator.clipboard?.writeText(input.value);
-      fb.style.display = "block";
-      fb.innerHTML = "Teks pautan telah disalin ke papan keratan.";
+    function selectModule(modId) {
+      state.activeModuleId = modId;
+      state.pendingAttachment = null;
+      saveState();
+      renderModuleRail();
+      renderModuleWorkspace();
+      updateKPIs();
     }
 
 
-    function janaTiket(e) {
-      e.preventDefault();
-      const randomDigits = Math.floor(1000 + Math.random() * 9000);
-      const tiket = "GOV-2026-" + randomDigits;
-      const kodLaluan = Math.random().toString(36).substring(2, 8).toUpperCase();
-      const kat = document.getElementById("kategoriAduan").value;
-      const mod = document.getElementById("modKerahsiaan").value;
-      const lok = document.getElementById("lokasiKejadian").value.trim();
+    function renderModuleRail() {
+      const rail = document.getElementById("moduleRail");
+      rail.innerHTML = MODULES_CONFIG.map((m) => {
+        const count = (state.records[m.id] || []).length;
+        const active = m.id === state.activeModuleId ? "active" : "";
+        return `
+          <button class="rail-item ${active}" onclick="selectModule('${m.id}')">
+            <div class="rail-code">${m.code}</div>
+            <span class="rail-name">${m.name}</span>
+            <span class="rail-count">${count} rekod tersimpan</span>
+          </button>
+        `;
+      }).join("");
+    }
 
 
-      pangkalanTiket[tiket] = {
-        kategori: kat,
-        status: `Diterima (${mod}) — menunggu penilaian awal di ${lok}`
+    function renderModuleWorkspace() {
+      const mod = MODULES_CONFIG.find((m) => m.id === state.activeModuleId) || MODULES_CONFIG[0];
+      const list = state.records[mod.id] || [];
+      const box = document.getElementById("moduleWorkspace");
+
+
+      const fieldsHtml = mod.fields.map((f) => {
+        if (f.type === "select") {
+          const opts = f.options.map((o) => `<option value="${escapeAttr(o)}">${escapeHtml(o)}</option>`).join("");
+          return `<div><label for="f_${f.key}">${escapeHtml(f.label)}</label><select id="f_${f.key}">${opts}</select></div>`;
+        }
+        if (f.type === "textarea") {
+          return `<div style="grid-column:1/-1;"><label for="f_${f.key}">${escapeHtml(f.label)}</label><textarea id="f_${f.key}" rows="3" placeholder="${escapeAttr(f.placeholder || "")}"></textarea></div>`;
+        }
+        return `<div><label for="f_${f.key}">${escapeHtml(f.label)}</label><input id="f_${f.key}" type="text" placeholder="${escapeAttr(f.placeholder || "")}" /></div>`;
+      }).join("");
+
+
+      const rowsHtml = list.length === 0
+        ? `<tr><td colspan="7" style="color:var(--text-secondary);">Belum ada rekod dalam ${mod.code}. Gunakan borang di atas untuk menambah rekod baharu.</td></tr>`
+        : list.map((r, idx) => {
+            const fileCell = r.attachment
+              ? `<div><strong>${escapeHtml(r.attachment.name)}</strong> (${formatBytes(r.attachment.size)})</div>
+                 <div class="action-row" style="margin-top:0.25rem;">
+                   ${r.attachment.dataUrl ? `<a class="btn" style="padding:0.25rem 0.5rem;font-size:0.74rem;" href="${r.attachment.dataUrl}" download="${escapeAttr(r.attachment.name)}">Muat Turun</a>` : ""}
+                   ${r.attachment.textSample ? `<button class="btn" style="padding:0.25rem 0.5rem;font-size:0.74rem;" onclick="previewTextAttachment('${mod.id}', ${idx})">Lihat Teks</button>` : ""}
+                 </div>`
+              : `<span style="color:var(--text-secondary);">Tiada lampiran</span>`;
+
+
+            const statusOpts = getStatusOptions(mod).map((st) =>
+              `<option value="${escapeAttr(st)}" ${st === r.status ? "selected" : ""}>${escapeHtml(st)}</option>`
+            ).join("");
+
+
+            return `
+              <tr>
+                <td><strong>${escapeHtml(r.id)}</strong><br><span style="font-size:0.72rem;color:var(--text-secondary);">${escapeHtml(r.createdAt)}</span></td>
+                <td><strong>${escapeHtml(r.title || "-")}</strong><br><span style="font-size:0.76rem;color:var(--text-secondary);">${escapeHtml(r.category || "")}</span></td>
+                <td>${escapeHtml(r.party || "-")}</td>
+                <td><span class="badge ${riskClass(r.risk)}">${escapeHtml(r.risk || "-")}</span></td>
+                <td>
+                  <select style="margin-bottom:0;padding:0.35rem 0.5rem;font-size:0.78rem;" onchange="updateRecordStatus('${mod.id}', '${r.id}', this.value)">
+                    ${statusOpts}
+                  </select>
+                </td>
+                <td>${fileCell}</td>
+                <td>
+                  <button class="btn" style="padding:0.3rem 0.55rem;font-size:0.75rem;" onclick="viewRecordDetail('${mod.id}', '${r.id}')">Butiran</button>
+                  <button class="btn btn-danger" style="padding:0.3rem 0.55rem;font-size:0.75rem;" onclick="deleteRecord('${mod.id}', '${r.id}')">Padam</button>
+                </td>
+              </tr>
+            `;
+          }).join("");
+
+
+      box.innerHTML = `
+        <div class="hero-badge">${mod.code} · AKTIF</div>
+        <h2>${escapeHtml(mod.name)}</h2>
+        <p>${escapeHtml(mod.desc)}</p>
+
+
+        <form id="modForm" onsubmit="addModuleRecord(event, '${mod.id}')">
+          <div class="form-grid">${fieldsHtml}</div>
+
+
+          <div class="file-drop">
+            <label for="modFileInput">Muat Naik Fail Lampiran (PDF, Dokumen, Gambar, CSV, Teks, dsb.)</label>
+            <input id="modFileInput" type="file" onchange="handleFileInput(this, 'modFileMeta')" />
+            <div id="modFileMeta" class="file-meta">Tiada fail dipilih. Fail akan dilampirkan bersama rekod ini.</div>
+          </div>
+
+
+          <div class="action-row">
+            <button class="btn btn-primary" type="submit">Simpan Rekod ke ${mod.code}</button>
+            <button class="btn" type="reset" onclick="clearPendingAttachment('modFileMeta')">Kosongkan Borang</button>
+          </div>
+        </form>
+
+
+        <div id="modDetailBox" class="notice" style="display:none;"></div>
+
+
+        <hr style="border:none;border-top:1px solid var(--glass-border);margin:1.35rem 0;" />
+
+
+        <div class="action-row" style="justify-content:space-between;">
+          <h3>Daftar Rekod (${list.length})</h3>
+          <input id="modSearchInput" type="text" placeholder="Cari tajuk, pihak atau ID..." oninput="filterModuleTable()" style="max-width:260px;margin-bottom:0;" />
+        </div>
+
+
+        <div class="table-wrap">
+          <table id="modRecordsTable">
+            <thead>
+              <tr>
+                <th>ID / Masa</th>
+                <th>Tajuk &amp; Kategori</th>
+                <th>Pihak / Unit</th>
+                <th>Risiko</th>
+                <th>Status</th>
+                <th>Lampiran Fail</th>
+                <th>Tindakan</th>
+              </tr>
+            </thead>
+            <tbody id="modRecordsBody">${rowsHtml}</tbody>
+          </table>
+        </div>
+      `;
+    }
+
+
+    function getStatusOptions(mod) {
+      const sf = mod.fields.find((f) => f.key === "status");
+      return sf && sf.options ? sf.options : ["Baharu", "Dalam Proses", "Selesai"];
+    }
+
+
+    function riskClass(r) {
+      if (!r) return "";
+      const s = r.toLowerCase();
+      if (s.includes("kritikal") || s.includes("tinggi") || s.includes("merah") || s.includes("red")) return "badge-high";
+      if (s.includes("sederhana") || s.includes("kuning") || s.includes("jingga") || s.includes("minor")) return "badge-warn";
+      return "badge-ok";
+    }
+
+
+    function clearPendingAttachment(metaId) {
+      state.pendingAttachment = null;
+      const el = document.getElementById(metaId);
+      if (el) el.textContent = "Tiada fail dipilih.";
+    }
+
+
+    function handleFileInput(inputEl, metaId) {
+      const file = inputEl.files && inputEl.files[0];
+      const metaEl = document.getElementById(metaId);
+      if (!file) {
+        clearPendingAttachment(metaId);
+        return;
+      }
+
+
+      const info = {
+        name: file.name,
+        size: file.size,
+        type: file.type || "application/octet-stream",
+        dataUrl: null,
+        textSample: null
       };
 
 
-      document.getElementById("statAduan").textContent = Object.keys(pangkalanTiket).length;
-      const box = document.getElementById("hasilTiket");
-      box.style.display = "block";
-      box.innerHTML = `
-        <strong>Aduan Direkodkan dalam Sesi Semasa</strong><br>
-        No. Tiket: <strong>${tiket}</strong><br>
-        Kod Laluan Semakan: <strong>${kodLaluan}</strong><br>
-        Kategori: ${kat} (${mod})
-      `;
-      document.getElementById("formAduan").reset();
-    }
+      const canEmbedDataUrl = file.size <= 1500000;
+      const isTextLike = /\.(txt|csv|md|json|log|xml)$/i.test(file.name) || (file.type && file.type.startsWith("text/"));
 
 
-    function semakStatusTiket(e) {
-      e.preventDefault();
-      const kod = document.getElementById("inputSemakTiket").value.trim().toUpperCase();
-      const box = document.getElementById("hasilSemak");
-      box.style.display = "block";
-      if (pangkalanTiket[kod]) {
-        box.innerHTML = `<strong>${kod}</strong> — ${pangkalanTiket[kod].kategori}<br>Status: ${pangkalanTiket[kod].status}`;
+      if (isTextLike && file.size <= 500000) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          info.textSample = String(ev.target.result || "").slice(0, 1200);
+          state.pendingAttachment = info;
+          if (metaEl) metaEl.textContent = `Fail sedia: ${info.name} (${formatBytes(info.size)}) — pratonton teks tersedia`;
+        };
+        reader.readAsText(file);
+      } else if (canEmbedDataUrl) {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          info.dataUrl = ev.target.result;
+          state.pendingAttachment = info;
+          if (metaEl) metaEl.textContent = `Fail sedia: ${info.name} (${formatBytes(info.size)})`;
+        };
+        reader.readAsDataURL(file);
       } else {
-        box.innerHTML = `Tiket <strong>${kod}</strong> tidak ditemui dalam rekod sesi ini. Cuba <strong>GOV-2026-1001</strong> atau jana tiket baharu.`;
+        state.pendingAttachment = info;
+        if (metaEl) metaEl.textContent = `Fail direkodkan: ${info.name} (${formatBytes(info.size)}) — saiz besar, metadata fail disimpan`;
       }
     }
 
 
-    function salinKataKunci() {
-      const val = document.getElementById("kataKunciRisikan").value.trim();
-      const fb = document.getElementById("risikanFeedback");
-      fb.style.display = "block";
-      if (!val) {
-        fb.innerHTML = "Sila masukkan kata kunci terlebih dahulu sebelum menyalin.";
+    function addModuleRecord(e, modId) {
+      e.preventDefault();
+      const mod = MODULES_CONFIG.find((m) => m.id === modId);
+      if (!mod) return;
+
+
+      const titleVal = (document.getElementById("f_title")?.value || "").trim();
+      if (!titleVal) {
+        showNotice("Sila isi sekurang-kurangnya medan Tajuk / Rujukan.", true);
         return;
       }
-      navigator.clipboard?.writeText(val);
-      fb.innerHTML = `Kata kunci <strong>${val}</strong> disalin. Klik kad pangkalan data di atas untuk membuka laman rujukan di tab baharu.`;
+
+
+      const now = new Date();
+      const stamp = now.toISOString().replace("T", " ").substring(0, 16);
+      const codePrefix = mod.code.replace("MOD-", "");
+      const rand = Math.floor(100 + Math.random() * 900);
+
+
+      const rec = {
+        id: `${mod.code}-${codePrefix}${rand}`,
+        title: titleVal,
+        party: (document.getElementById("f_party")?.value || "").trim(),
+        category: document.getElementById("f_category")?.value || "",
+        risk: document.getElementById("f_risk")?.value || "",
+        status: document.getElementById("f_status")?.value || "Baharu",
+        notes: (document.getElementById("f_notes")?.value || "").trim(),
+        attachment: state.pendingAttachment ? { ...state.pendingAttachment } : null,
+        createdAt: stamp
+      };
+
+
+      state.records[modId].unshift(rec);
+      state.pendingAttachment = null;
+      saveState();
+      addAudit(mod.code, "Tambah Rekod", `${rec.id}: ${rec.title}${rec.attachment ? " [Lampiran: " + rec.attachment.name + "]" : ""}`);
+      renderModuleRail();
+      renderModuleWorkspace();
+      showNotice(`Rekod <strong>${escapeHtml(rec.id)}</strong> berjaya disimpan ke <strong>${escapeHtml(mod.name)}</strong>.`);
     }
 
 
-    function prosesLogin(e) {
+    function updateRecordStatus(modId, recId, newStatus) {
+      const list = state.records[modId] || [];
+      const item = list.find((r) => r.id === recId);
+      if (!item) return;
+      item.status = newStatus;
+      saveState();
+      const mod = MODULES_CONFIG.find((m) => m.id === modId);
+      addAudit(mod ? mod.code : modId, "Kemas Kini Status", `${recId} -> ${newStatus}`);
+    }
+
+
+    function deleteRecord(modId, recId) {
+      const list = state.records[modId] || [];
+      state.records[modId] = list.filter((r) => r.id !== recId);
+      saveState();
+      const mod = MODULES_CONFIG.find((m) => m.id === modId);
+      addAudit(mod ? mod.code : modId, "Padam Rekod", `Rekod ${recId} dipadam.`);
+      renderModuleRail();
+      renderModuleWorkspace();
+    }
+
+
+    function viewRecordDetail(modId, recId) {
+      const item = (state.records[modId] || []).find((r) => r.id === recId);
+      const box = document.getElementById("modDetailBox");
+      if (!item || !box) return;
+      box.style.display = "block";
+      box.innerHTML = `
+        <strong>${escapeHtml(item.id)} — ${escapeHtml(item.title)}</strong><br>
+        Kategori: ${escapeHtml(item.category)} | Pihak/Unit: ${escapeHtml(item.party)} | Risiko: ${escapeHtml(item.risk)} | Status: ${escapeHtml(item.status)}<br>
+        Catatan: ${escapeHtml(item.notes || "-")}<br>
+        Lampiran: ${item.attachment ? escapeHtml(item.attachment.name) + " (" + formatBytes(item.attachment.size) + ")" : "Tiada"}
+      `;
+    }
+
+
+    function previewTextAttachment(modId, idx) {
+      const item = (state.records[modId] || [])[idx];
+      const box = document.getElementById("modDetailBox");
+      if (!item || !item.attachment || !box) return;
+      box.style.display = "block";
+      box.innerHTML = `<strong>Pratonton Teks: ${escapeHtml(item.attachment.name)}</strong><pre style="white-space:pre-wrap;margin-top:0.4rem;font-size:0.78rem;">${escapeHtml(item.attachment.textSample || "")}</pre>`;
+    }
+
+
+    function filterModuleTable() {
+      const q = (document.getElementById("modSearchInput")?.value || "").toLowerCase();
+      const rows = document.querySelectorAll("#modRecordsBody tr");
+      rows.forEach((tr) => {
+        const txt = tr.textContent.toLowerCase();
+        tr.style.display = txt.includes(q) ? "" : "none";
+      });
+    }
+
+
+    function submitPublicComplaint(e) {
       e.preventDefault();
-      const peranan = document.getElementById("perananLogin").value;
-      const emel = document.getElementById("emelLogin").value.trim();
-      const fb = document.getElementById("loginFeedback");
-      fb.style.display = "block";
-      fb.innerHTML = `Akses sesi dibuka untuk <strong>${emel}</strong> (${peranan}). Mengalihkan ke Bilik Gerakan...`;
-      setTimeout(() => switchView("cio"), 500);
+      const subjek = document.getElementById("pubSubjek").value.trim();
+      const kat = document.getElementById("pubKategori").value;
+      const identiti = document.getElementById("pubIdentiti").value;
+      const bahagian = document.getElementById("pubBahagian").value.trim();
+      const fakta = document.getElementById("pubFakta").value.trim();
+
+
+      const now = new Date();
+      const stamp = now.toISOString().replace("T", " ").substring(0, 16);
+      const ticketId = "ADU-2026-" + Math.floor(102 + Math.random() * 897);
+
+
+      const rec = {
+        id: ticketId,
+        title: `[${identiti}] ${subjek}`,
+        party: bahagian,
+        category: kat,
+        risk: kat.includes("Rasuah") || kat.includes("Perolehan") ? "Tinggi" : "Sederhana",
+        status: "Baharu / Saringan JMM",
+        notes: fakta,
+        attachment: state.pendingAttachment ? { ...state.pendingAttachment } : null,
+        createdAt: stamp
+      };
+
+
+      state.records.m01.unshift(rec);
+      state.pendingAttachment = null;
+      saveState();
+      addAudit("MOD-01", "Aduan Portal Awam", `Tiket ${ticketId} dihantar (${identiti}).`);
+
+
+      const res = document.getElementById("pubSubmitResult");
+      res.style.display = "block";
+      res.innerHTML = `Aduan berjaya direkodkan. No. Tiket anda: <strong>${escapeHtml(ticketId)}</strong>. Anda boleh menyemaknya di ruang semakan di bawah atau dalam Modul 01.`;
+
+
+      document.getElementById("checkTicketInput").value = ticketId;
+      document.getElementById("publicComplaintForm").reset();
+      clearPendingAttachment("pubFilePreview");
+      renderModuleRail();
+      if (state.activeModuleId === "m01") renderModuleWorkspace();
     }
 
 
-    renderModul();
+    function checkPublicTicket() {
+      const code = (document.getElementById("checkTicketInput").value || "").trim().toUpperCase();
+      const res = document.getElementById("checkTicketResult");
+      res.style.display = "block";
+
+
+      const found = (state.records.m01 || []).find((r) => r.id.toUpperCase() === code);
+      if (found) {
+        res.innerHTML = `<strong>${escapeHtml(found.id)}</strong> — ${escapeHtml(found.title)}<br>Status: <strong>${escapeHtml(found.status)}</strong> | Bahagian: ${escapeHtml(found.party)} | Dikemas kini: ${escapeHtml(found.createdAt)}`;
+      } else {
+        res.innerHTML = `Tiket <strong>${escapeHtml(code)}</strong> tidak ditemui. Cuba <strong>ADU-2026-101</strong> atau hantar aduan baharu.`;
+      }
+    }
+
+
+    function copyOsintQuery() {
+      const q = (document.getElementById("osintQuery").value || "").trim();
+      const notice = document.getElementById("osintNotice");
+      notice.style.display = "block";
+      if (!q) {
+        notice.innerHTML = "Sila masukkan kata kunci terlebih dahulu.";
+        return;
+      }
+      navigator.clipboard?.writeText(q);
+      notice.innerHTML = `Kata kunci <strong>${escapeHtml(q)}</strong> telah disalin. Pilih pangkalan data di bawah untuk membuka carian di tab baharu.`;
+    }
+
+
+    function saveOsintToMod12() {
+      const q = (document.getElementById("osintQuery").value || "").trim();
+      const note = (document.getElementById("osintNote").value || "").trim();
+      const notice = document.getElementById("osintNotice");
+      notice.style.display = "block";
+      if (!q) {
+        notice.innerHTML = "Sila masukkan nama entiti / kata kunci sebelum menyimpan ke Modul 12.";
+        return;
+      }
+
+
+      const now = new Date();
+      const stamp = now.toISOString().replace("T", " ").substring(0, 16);
+      const id = "MOD-12-12" + Math.floor(10 + Math.random() * 89);
+
+
+      state.records.m12.unshift({
+        id,
+        title: `Semakan OSINT / IDD: ${q}`,
+        party: q,
+        category: "Risikan Terbuka (OSINT)",
+        risk: "Risiko Sederhana",
+        status: "Dalam Semakan",
+        notes: note || "Rekod risikan terbuka disimpan daripada Hab OSINT.",
+        attachment: null,
+        createdAt: stamp
+      });
+      saveState();
+      addAudit("MOD-12", "Simpan Risikan OSINT", `${id}: ${q}`);
+      renderModuleRail();
+      if (state.activeModuleId === "m12") renderModuleWorkspace();
+      notice.innerHTML = `Disimpan ke <strong>Modul 12 (IDD)</strong> dengan ID <strong>${escapeHtml(id)}</strong>.`;
+    }
+
+
+    function exportCurrentModuleCSV() {
+      const mod = MODULES_CONFIG.find((m) => m.id === state.activeModuleId) || MODULES_CONFIG[0];
+      const list = state.records[mod.id] || [];
+      const headers = ["ID", "Tarikh_Masa", "Tajuk", "Kategori", "Pihak_Unit", "Risiko", "Status", "Lampiran", "Catatan"];
+      const lines = [headers.join(",")];
+
+
+      list.forEach((r) => {
+        const row = [
+          r.id, r.createdAt, r.title, r.category, r.party, r.risk, r.status,
+          r.attachment ? r.attachment.name : "",
+          r.notes || ""
+        ].map((val) => `"${String(val || "").replace(/"/g, '""')}"`);
+        lines.push(row.join(","));
+      });
+
+
+      const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `${mod.code.toLowerCase()}_rekod.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      addAudit(mod.code, "Eksport CSV", `Mengeksport ${list.length} rekod ke CSV.`);
+    }
+
+
+    function exportAllDataJSON() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "govrity_14modul_sandaran.json";
+      a.click();
+      URL.revokeObjectURL(url);
+      showNotice("Fail sandaran penuh (<strong>govrity_14modul_sandaran.json</strong>) berjaya dimuat turun.");
+    }
+
+
+    function resetDemoData() {
+      localStorage.removeItem(STORAGE_KEY);
+      state = defaultState();
+      saveState();
+      renderModuleRail();
+      renderModuleWorkspace();
+      renderAudit();
+      updateKPIs();
+      showNotice("Data telah diset semula kepada rekod contoh awal.");
+    }
+
+
+    function renderAudit() {
+      const tbody = document.getElementById("auditTableBody");
+      if (!tbody) return;
+      tbody.innerHTML = (state.audit || []).map((a) => `
+        <tr>
+          <td>${escapeHtml(a.time)}</td>
+          <td><span class="badge">${escapeHtml(a.module)}</span></td>
+          <td>${escapeHtml(a.action)}</td>
+          <td>${escapeHtml(a.detail)}</td>
+        </tr>
+      `).join("");
+    }
+
+
+    function updateKPIs() {
+      const mod = MODULES_CONFIG.find((m) => m.id === state.activeModuleId) || MODULES_CONFIG[0];
+      let total = 0;
+      Object.values(state.records).forEach((arr) => { total += (arr || []).length; });
+
+
+      document.getElementById("kpiTotalRecords").textContent = total;
+      document.getElementById("kpiActiveModCode").textContent = mod.code;
+      document.getElementById("kpiActiveModName").textContent = mod.name;
+      document.getElementById("kpiActiveModCount").textContent = (state.records[mod.id] || []).length;
+      document.getElementById("kpiAuditCount").textContent = (state.audit || []).length;
+    }
+
+
+    function formatBytes(bytes) {
+      if (!bytes && bytes !== 0) return "0 B";
+      if (bytes < 1024) return bytes + " B";
+      if (bytes < 1048576) return (bytes / 1024).toFixed(1) + " KB";
+      return (bytes / 1048576).toFixed(1) + " MB";
+    }
+
+
+    function escapeHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+
+    function escapeAttr(str) {
+      return escapeHtml(str).replace(/'/g, "&#39;");
+    }
+
+
+    renderModuleRail();
+    renderModuleWorkspace();
+    renderAudit();
+    updateKPIs();
   </script>
 </body>
 </html>
